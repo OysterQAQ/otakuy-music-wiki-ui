@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="1.css">
+</head>
+
+<body>
+<div class="container">
+    <div class="formBox level-login">
+        <div class="box boxShaddow"></div>
+        <div class="box loginBox">
+            <h2>LOGIN</h2>
+            <form class="form" id="login_form">
+                <div class="f_row">
+                    <label>Username</label>
+                    <input type="text" class="input-field" name="username" autocomplete="off" required>
+                    <u></u>
+                </div>
+                <div class="f_row last">
+                    <label>Password</label>
+                    <input type="password" class="input-field" name="password" autocomplete="off" required>
+                    <u></u>
+                </div>
+                <button class="btn" id="login_btn"><span class="login_info">GO</span><u></u>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 415.582 415.582"
+                         xml:space="preserve">
+                                <path d="M411.47,96.426l-46.319-46.32c-5.482-5.482-14.371-5.482-19.853,0L152.348,243.058l-82.066-82.064
+                                      c-5.48-5.482-14.37-5.482-19.851,0l-46.319,46.32c-5.482,5.481-5.482,14.37,0,19.852l138.311,138.31
+                                      c2.741,2.742,6.334,4.112,9.926,4.112c3.593,0,7.186-1.37,9.926-4.112L411.47,116.277c2.633-2.632,4.111-6.203,4.111-9.925
+                                      C415.582,102.628,414.103,99.059,411.47,96.426z"/>
+                                </svg>
+                </button>
+                <div class="f_link">
+                    <a href="" class="resetTag">忘记密码</a>
+                </div>
+            </form>
+        </div>
+        <div class="box forgetbox">
+            <a href="#" class="back icon-back">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                     viewBox="0 0 199.404 199.404" style="enable-background:new 0 0 199.404 199.404;"
+                     xml:space="preserve">
+	<polygon points="199.404,81.529 74.742,81.529 127.987,28.285 99.701,0 0,99.702 99.701,199.404 127.987,171.119 74.742,117.876
+		199.404,117.876 "/>
+</svg>
+            </a>
+            <h2>Reset Password</h2>
+            <form class="form">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, </p>
+                <div class="f_row last">
+                    <label>Email Id</label>
+                    <input type="text" class="input-field" required>
+                    <u></u>
+                </div>
+                <button class="btn"><span>Reset</span><u></u>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 415.582 415.582"
+                         xml:space="preserve">
+                                <path d="M411.47,96.426l-46.319-46.32c-5.482-5.482-14.371-5.482-19.853,0L152.348,243.058l-82.066-82.064
+                                      c-5.48-5.482-14.37-5.482-19.851,0l-46.319,46.32c-5.482,5.481-5.482,14.37,0,19.852l138.311,138.31
+                                      c2.741,2.742,6.334,4.112,9.926,4.112c3.593,0,7.186-1.37,9.926-4.112L411.47,116.277c2.633-2.632,4.111-6.203,4.111-9.925
+                                      C415.582,102.628,414.103,99.059,411.47,96.426z"/>
+                                </svg>
+                </button>
+            </form>
+        </div>
+        <div class="box registerBox">
+            <span class="reg_bg"></span>
+            <h2>Register</h2>
+            <form class="form" id="register_form">
+                <div class="f_row">
+                    <label>Email</label>
+                    <input type="email" name="email" class="input-field" required>
+                    <u></u>
+                </div>
+                <div class="f_row">
+                    <label>Username</label>
+                    <input type="text" name="username" class="input-field" required>
+                    <u></u>
+                </div>
+                <div class="f_row">
+                    <label>Password</label>
+                    <input type="password" name="password" class="input-field" pattern="[a-zA-Z0-9]{6,20}" required>
+                    <u></u>
+                </div>
+                <div class="f_row last">
+                    <label>验证码</label>
+                    <input type="text" id="verification_code" verification_id="123"  class="input-field"
+                           pattern="[a-zA-Z0-9]{6,20}" required>
+                    <img id="verification_img"
+                         src="data:image/jpeg;base64,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">
+                    <u></u>
+                </div>
+<!--                <div class="f_row last">
+                    <label>Repeat Password</label>
+                    <input type="password" class="input-field" pattern="[a-zA-Z0-9]{6,20}" required>
+                    <u></u>
+                </div>-->
+                <button class="btn-large" id="register_btn">CREATE</button>
+            </form>
+        </div>
+        <a href="#" class="regTag icon-add" id="goto_register_form">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 357 357"
+                 style="enable-background:new 0 0 357 357;" xml:space="preserve">
+<path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z"/>
+</svg>
+
+        </a>
+    </div>
+</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="1.js"></script>
+</html>

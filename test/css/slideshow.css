@@ -1,0 +1,192 @@
+
+#carousel {
+    max-width: 100%;
+    position: relative;
+    height: 500px;
+    top: 200px;
+    transform: translateY(-50%);
+}
+#carousel .bg{
+    top: 10%;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    filter: blur(2.5rem);
+    background-image: linear-gradient(rgba(222,222,222,0),rgba(222,222,222,0.5));
+}
+#bg{
+    mix-blend-mode: overlay;
+
+    margin: 0px 0px 0px 0px;
+    min-width: 100%;
+    min-height: 430px;
+    height: auto;
+}
+#carousel > div {
+
+    top:55px;
+    position: absolute;
+    margin: 20px 0 0 0;
+    transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+    opacity: 1;
+}
+#carousel div img {
+    border-radius:10px;
+    width: 400px;
+    box-shadow: 0 7px 9px rgba(0, 0, 0, 0.35);
+    transition: width 1s;
+}
+#carousel div.hideLeft {
+    left: 0%;
+    opacity: 0;
+    transform: translateY(50%) translateX(-50%);
+}
+#carousel div.hideLeft img {
+    width: 200px;
+}
+#carousel div.hideRight {
+    left: 100%;
+    opacity: 0;
+    transform: translateY(50%) translateX(-50%);
+}
+#carousel div.hideRight img {
+    width: 200px;
+}
+#carousel div.prev {
+    z-index: 5;
+    left: 30%;
+    transform: translateY(50px) translateX(-50%);
+}
+#carousel div.prev img {
+    width: 300px;
+}
+#carousel div.prevLeftSecond {
+    z-index: 4;
+    left: 15%;
+    transform: translateY(50%) translateX(-50%);
+    opacity: 0.7;
+}
+#carousel div.prevLeftSecond img {
+    width: 200px;
+}
+#carousel div.selected {
+    z-index: 10;
+    left: 50%;
+    transform: translateY(0px) translateX(-50%);
+}
+#carousel div.next {
+    z-index: 5;
+    left: 70%;
+    transform: translateY(50px) translateX(-50%);
+}
+#carousel div.next img {
+    width: 300px;
+}
+#carousel div.nextRightSecond {
+    z-index: 4;
+    left: 85%;
+    transform: translateY(50%) translateX(-50%);
+    opacity: 0.7;
+}
+#carousel div.nextRightSecond img {
+    width: 200px;
+}
+
+.buttons {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+}
+
+.media {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+}
+
+.media__image {
+    display: block;
+}
+
+.media__body {
+    border-radius: 10px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    color: #b1f4cf;
+    font-size: 1em;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 3.75em 3em;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    right: 0;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+}
+
+.media__body h1 {
+    background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+    -webkit-background-clip: text; /*必需加前缀 -webkit- 才支持这个text值 */
+    -webkit-text-fill-color: transparent; /*text-fill-color会覆盖color所定义的字体颜色： */
+}
+
+.selected > .media__body:hover {
+    opacity: 1;
+}
+
+.media__body:after, .media__body:before {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    bottom: 1em;
+    content: '';
+    left: 1em;
+    opacity: 0;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    -webkit-transition: 0.6s 0.2s;
+    transition: 0.6s 0.2s;
+}
+
+.media__body:before {
+    border-bottom: none;
+    border-top: none;
+    left: 2em;
+    right: 2em;
+}
+
+.media__body:after {
+    border-left: none;
+    border-right: none;
+    bottom: 2em;
+    top: 2em;
+}
+
+.media__body:hover:after, .media__body:hover:before {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.media__body h2 {
+    margin-top: 0;
+}
+
+.media__body p {
+    position: relative;
+    line-height: 1.4em;
+    height: 145px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 15px;
+    background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5em;
+}

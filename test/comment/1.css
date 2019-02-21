@@ -1,0 +1,139 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin: 0;
+    background: #DEDEDE;
+    color: #5a6674;
+    font-size: 13px;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: -25% 50%;
+    background-attachment: fixed;
+
+}
+
+#commentbox {
+    margin: 0 auto;
+    width: 540px;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 484px;
+    position: relative;
+    top: 100px;
+
+}
+
+#commentlist {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 540px;
+    height: 484px;
+    overflow-y: auto;
+}
+
+.comment {
+    width: 540px;
+    min-height: 70px;
+    border-bottom: 1px solid #e7ebee;
+    position: relative;
+}
+
+.comment:hover {
+    background: #f1f4f6;
+    cursor: pointer;
+}
+
+.comment img {
+    width: 40px;
+    border-radius: 50%;
+    margin: 15px;
+    position: absolute;
+}
+
+
+.userinfo {
+    position: relative;
+    left: 70px;
+    display: block;
+    padding: 10px 0 0 0;
+    width: 420px;
+
+}
+.content {
+    position: relative;
+
+    left: 70px;
+    display: block;
+    padding: 10px 0 0 0;
+    width: 420px;
+
+}
+.createTime {
+    position: relative;
+    text-align: right;
+    display: block;
+    padding: 10px 50px 10px 0px;
+}
+
+.comment .userinfo strong {
+    font-weight: 600;
+    font-size: 15px;
+    color: #597a96;
+
+}
+
+.comment p span {
+    font-size: 13px;
+    font-weight: 400;
+    color: #aab8c2;
+}
+
+#commitcomment {
+    background: #e3e9ed url("../img/comment.gif") 0px 0 no-repeat;
+    background-size: 30px;
+    height: 60px;
+    width: 540px;
+    position: absolute;
+    bottom: 0;
+    background-position: 10px 12px;
+    left: 0;
+
+}
+
+#commentfield {
+    position: absolute;
+
+    background: #e3e9ed;
+    margin: 15px 0 0 0px;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    width: 400px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400px;
+    color: #8198ac;
+}
+#to-username{
+    cursor: pointer;
+    text-overflow :  ellipsis;
+    width:100px;
+    background: #e3e9ed;
+    margin: 15px 0 0 55px;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400px;
+    color: #8198ac;
+}
+
+#commentfield:focus {
+    outline: 0;
+}
