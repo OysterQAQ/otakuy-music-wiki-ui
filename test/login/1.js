@@ -15,6 +15,7 @@ inP.on('blur', function () {
 
 $('.resetTag').click(function (e) {
     e.preventDefault();
+
     $('.formBox').addClass('level-forget').removeClass('level-reg');
 });
 
@@ -114,29 +115,47 @@ $('#register_btn').on('click', function (e) {
             setTimeout(function () {
                 $('.formBox').removeClass('level-reg').addClass('level-login');
             }, 700);
-            /*$.cookie('Authorization', "Bearer " + request.getResponseHeader('Authorization'), {expires: 20});
-            $('.login_info').get(0).innerHTML = "登录成功";
-            setTimeout(function () {
-                $('.container').hide();
-            }, 500);*/
-
         },
         error: function () {
-    /*        //请求出错处理
+            $('#register_btn').html("注册失败");
             inP.parent('.f_row').addClass('shake');
-            inP.val('');
-            $('.login_info').get(0).innerHTML = "登录失败";
             setTimeout(function () {
-                $('.login_info').get(0).innerHTML = "GO";
-            }, 500);*/
+                $('#register_btn').html("CREATE");
+            }, 1000);
+        }
+    });
+});
+
+$('#reset_btn').on('click', function (e) {
+    e.preventDefault();
+
+    console.log($("#reset_form").serializeObject());
+    $.ajax({
+        type: "get",
+        url: "http://127.0.0.1/forgetPassword?email="+$('#reset_email').val(),
+        datatype: "application/json",
+        contentType: 'application/json',
+        success: function (data, textStatus, request) {
+            console.log(data)
+            $('#reset_btn').html("发送成功");
+            setTimeout(function () {
+                $('.formBox').removeClass('level-forget').addClass('level-login');
+            }, 700);
+        },
+        error: function () {
+            $('#reset_btn').html("发送失败");
+            inP.parent('.f_row').addClass('shake');
+            setTimeout(function () {
+                $('#reset_btn').html("RESET");
+            }, 1000);
         }
     });
 });
 
 
 
-
 $('#verification_img').on('click', function () {
+    if (!$('.formBox').hasClass('level-reg')){
     $.ajax({
         type: "get",
         url: "http://127.0.0.1/verificationCode",
@@ -149,7 +168,7 @@ $('#verification_img').on('click', function () {
         error: function () {
             alert("获取验证码失败")
         }
-    });
+    });}
 });
 $('#goto_register_form').on('click', function () {
     $.ajax({
