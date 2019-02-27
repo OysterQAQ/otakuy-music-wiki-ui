@@ -1,3 +1,49 @@
+$.ajax({
+    type: "get",
+    url: "http://127.0.0.1/albums/recommendAlbum",
+    contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
+    success: function (data, textStatus, request) {
+        data = data.data;
+        console.log(data[0].cover)
+        var select = Math.floor(data.length/2);
+        var html='';
+        for(var i=0;i<=select-3;i++)
+            html+=createHtml(data[i],'hideLeft');
+        html+=createHtml(data[select-2],'prevLeftSecond');
+        html+=createHtml(data[select-1],'prev');
+        html+=createHtml(data[select],'selected');
+        html+=createHtml(data[select+1],'next');
+        html+=createHtml(data[select+2],'nextRightSecond');
+        for(var i=select+3;i<data.length;i++)
+            html+=createHtml(data[i],'hideRight');
+        html+='    <div class="bg">\n' +
+            '        <img id="bg" src="'+data[select].cover+'"/>\n' +
+            '    </div>'
+        $('#carousel').html(html);
+
+        $('#carousel .slide').click(function () {
+            moveToSelected($(this));
+            $('#bg').attr('src',$('.selected').find('img')[0].src);
+        });
+
+    },
+    error: function () {
+        //请求出错处理
+        inP.parent('.f_row').addClass('shake');
+        inP.val('');
+        $('.login_info').get(0).innerHTML = "登录失败";
+        setTimeout(function () {
+            $('.login_info').get(0).innerHTML = "GO";
+        }, 700);
+    }
+});
+function createHtml(data,position){
+    var artist=data.artists.map(function (item) {
+        return item.name;
+    }).join(' ');
+    return '<div class=\"slide '+position+' media\">'+'<img class="media__image" src="'+data.cover+'">'+'<div class="media__body"><h1>《'
+    +data.title+'》</h1><h1>'+artist+'</h1><p>'+data.intro+'</p></div></div>';
+}
 
 function moveToSelected(element) {
 
@@ -27,11 +73,5 @@ function moveToSelected(element) {
 }
 
 // Eventos teclado
-
-$('#carousel .slide').click(function() {
-    moveToSelected($(this));
-    console.log($(this).find('img')[0].src);
-    $('#bg').attr('src',$(this).find('img')[0].src);
-});
 
 

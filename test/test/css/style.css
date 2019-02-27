@@ -176,6 +176,7 @@ left: 200px;
     height: 60px;
     padding: 15px;
     border: none;
+    cursor: pointer;
     transition: transform 0.5s ease;
 }
 
@@ -197,6 +198,8 @@ left: 200px;
 }
 
 .close {
+    cursor: pointer;
+
     background-image: url("https://zephyo.github.io/22Days/code/3/graphics/close.svg");
     position: absolute;
     top: 5px;

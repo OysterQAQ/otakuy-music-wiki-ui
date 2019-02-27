@@ -17,7 +17,6 @@ $('.loginbox').click(function (e) {
         else
         $('.container').hide();
     }
-    else console.log('显示个人信息页')
 });
 
 $("#helpbox").hover(function () {
