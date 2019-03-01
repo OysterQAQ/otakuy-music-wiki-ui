@@ -1,0 +1,404 @@
+body {
+    font-family: Sans-serif;
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: #f0932e;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding: 3px;
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+}
+a:hover {
+    border-bottom: 1px solid #f0932e;
+}
+#header {
+    background-color: #f0932e;
+    color: #fff;
+    height: 171px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: inset 0px 20px 0px rgba(150, 50, 30, 0.2);
+    z-index: -1;
+}
+#album_form {
+    position: relative;
+    margin: 30px auto;
+    width: 100%;
+    height: 700px;
+    overflow-y: auto;
+    max-width: 560px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+h2 {
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
+    margin: 50px auto -15px auto;
+    font-family: Open Sans;
+    font-size: 30px;
+    text-shadow: 1px 1px 0px rgba(60, 10, 10, 0.1);
+}
+.box-shadow-none {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.Field_Input {
+    width: 100%;
+}
+.line-editable {
+    position: relative;
+    max-width: 350px;
+    margin: 10px auto;
+    z-index: 1;
+}
+.line-editable input,
+.line-editable select,
+.line-editable textarea {
+    outline: none !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 16px;
+    color: #666;
+    font-family: Sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    padding: 0px;
+    margin: 22px auto 3px;
+    height: 30px;
+    line-height: 30px;
+    border: 0;
+    border-bottom: 1px solid #e2e3e4;
+    background: -webkit-linear-gradient(bottom, #f0932e 50%, #f0932e 50%);
+    background: linear-gradient(to top, #f0932e 50%, #f0932e 50%);
+    background-position: left bottom;
+    background-size: 0px 1px;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+}
+.line-editable input:-webkit-autofill,
+.line-editable select:-webkit-autofill,
+.line-editable textarea:-webkit-autofill {
+    -webkit-text-fill-color: #666;
+    -webkit-box-shadow: 0 30px 50px -15px white inset !important;
+}
+.line-editable input .line-placeholder,
+.line-editable select .line-placeholder,
+.line-editable textarea .line-placeholder {
+    visibility: visible !important;
+    display: block !important;
+    line-height: 30px;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #999;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+}
+.line-editable input::-webkit-input-placeholder,
+.line-editable select::-webkit-input-placeholder,
+.line-editable textarea::-webkit-input-placeholder {
+    visibility: visible !important;
+    display: block !important;
+    line-height: 30px;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #999;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+}
+.line-editable input:-ms-input-placeholder,
+.line-editable select:-ms-input-placeholder,
+.line-editable textarea:-ms-input-placeholder,
+.line-editable input::-moz-placeholder,
+.line-editable select::-moz-placeholder,
+.line-editable textarea::-moz-placeholder,
+.line-editable input:-moz-placeholder,
+.line-editable select:-moz-placeholder,
+.line-editable textarea:-moz-placeholder {
+    visibility: visible !important;
+    display: block !important;
+    line-height: 30px;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #999;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+}
+.line-editable input + label,
+.line-editable select + label,
+.line-editable textarea + label {
+    display: block !important;
+    opacity: 0;
+    position: absolute;
+    top: 28px;
+    left: 0px;
+    font-size: 12px;
+    color: #c5c6c8;
+}
+.line-editable input:focus .line-placeholder-hasValue,
+.line-editable select:focus .line-placeholder-hasValue,
+.line-editable textarea:focus .line-placeholder-hasValue,
+.line-editable input.hasValue .line-placeholder-hasValue,
+.line-editable select.hasValue .line-placeholder-hasValue,
+.line-editable textarea.hasValue .line-placeholder-hasValue {
+    visibility: visible !important;
+    display: block !important;
+    opacity: 0;
+    font-size: 11px;
+    -webkit-transform: translate(0px, -20px);
+    -moz-transform: translate(0px, -20px);
+    -ms-transform: translate(0px, -20px);
+    -o-transform: translate(0px, -20px);
+    transform: translate(0px, -20px);
+}
+.line-editable input:focus::-webkit-input-placeholder,
+.line-editable select:focus::-webkit-input-placeholder,
+.line-editable textarea:focus::-webkit-input-placeholder,
+.line-editable input.hasValue::-webkit-input-placeholder,
+.line-editable select.hasValue::-webkit-input-placeholder,
+.line-editable textarea.hasValue::-webkit-input-placeholder {
+    visibility: visible !important;
+    display: block !important;
+    opacity: 0;
+    font-size: 11px;
+    -webkit-transform: translate(0px, -20px);
+    -moz-transform: translate(0px, -20px);
+    -ms-transform: translate(0px, -20px);
+    -o-transform: translate(0px, -20px);
+    transform: translate(0px, -20px);
+}
+.line-editable input:focus:-ms-input-placeholder,
+.line-editable select:focus:-ms-input-placeholder,
+.line-editable textarea:focus:-ms-input-placeholder,
+.line-editable input.hasValue:-ms-input-placeholder,
+.line-editable select.hasValue:-ms-input-placeholder,
+.line-editable textarea.hasValue:-ms-input-placeholder,
+.line-editable input:focus::-moz-placeholder,
+.line-editable select:focus::-moz-placeholder,
+.line-editable textarea:focus::-moz-placeholder,
+.line-editable input.hasValue::-moz-placeholder,
+.line-editable select.hasValue::-moz-placeholder,
+.line-editable textarea.hasValue::-moz-placeholder,
+.line-editable input:focus:-moz-placeholder,
+.line-editable select:focus:-moz-placeholder,
+.line-editable textarea:focus:-moz-placeholder,
+.line-editable input.hasValue:-moz-placeholder,
+.line-editable select.hasValue:-moz-placeholder,
+.line-editable textarea.hasValue:-moz-placeholder {
+    visibility: visible !important;
+    display: block !important;
+    opacity: 0;
+    font-size: 11px;
+    -webkit-transform: translate(0px, -20px);
+    -moz-transform: translate(0px, -20px);
+    -ms-transform: translate(0px, -20px);
+    -o-transform: translate(0px, -20px);
+    transform: translate(0px, -20px);
+}
+.line-editable input:focus + label,
+.line-editable select:focus + label,
+.line-editable textarea:focus + label,
+.line-editable input.hasValue + label,
+.line-editable select.hasValue + label,
+.line-editable textarea.hasValue + label {
+    font-size: 11px;
+    top: 9px;
+    display: block !important;
+    opacity: 1;
+}
+.line-editable input:hover,
+.line-editable select:hover,
+.line-editable textarea:hover,
+.line-editable input:focus,
+.line-editable select:focus,
+.line-editable textarea:focus {
+    border-bottom-color: #f0932e;
+}
+.line-editable input:focus,
+.line-editable select:focus,
+.line-editable textarea:focus {
+    background-position: left bottom;
+    background-size: 100% 1px;
+}
+.line-editable input:focus::-webkit-input-placeholder,
+.line-editable select:focus::-webkit-input-placeholder,
+.line-editable textarea:focus::-webkit-input-placeholder {
+    color: #f0932e;
+}
+.line-editable input:focus + label,
+.line-editable select:focus + label,
+.line-editable textarea:focus + label {
+    color: #f0932e;
+}
+.line-editable select {
+    color: #999;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-image: url("http://staging.siamosoci.com/download/MyTemplate/icon-dropdown.png");
+    background-position: center right !important;
+    background-size: 12px 12px !important;
+    position: relative;
+}
+.line-editable select:focus {
+    background-position: top right !important;
+}
+.line-editable select option,
+.line-editable select.hasValue {
+    font-size: 16px;
+    color: #666;
+    text-transform: lowercase;
+}
+.line-editable select option:first-letter,
+.line-editable select.hasValue:first-letter {
+    text-transform: capitalize;
+}
+.line-editable textarea {
+    max-width: 100%;
+    line-height: 125%;
+    resize: vertical;
+    transition-property: background, border, color, padding;
+}
+.line-editable textarea:focus,
+.line-editable textarea.hasValue {
+    height: 80px;
+    padding: 4px 0px;
+}
+.line-editable label,
+.line-editable .hasValue label {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #c5c6c8;
+    width: 100%;
+    display: none;
+    text-align: left;
+    transition: all 0.2s ease-in-out 0s;
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    -moz-transition: all 0.2s ease-in-out 0s;
+    -ms-transition: all 0.2s ease-in-out 0s;
+    -o-transition: all 0.2s ease-in-out 0s;
+    z-index: -1;
+}
+.line-editable label div,
+.line-editable .hasValue label div {
+    width: 100%;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+.tag-list-container {
+    position: relative;
+    width: 348px;
+    left: 82px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: text;
+
+    transition: border-color .4s ease;
+    margin-bottom: 80px;
+}
+.tag-list-container .tag {
+    max-width: 80px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 4px 8px;
+    background-color: #629c62;
+    color: #fff;
+    border-radius: 4px;
+    transition: all .4s ease;
+}
+.tag-list-container .tag.highlighted, .tag-list-container .tag:hover {
+    background-color: #deb356;
+}
+.tag-list-container .tag.showtext {
+
+    background-color: #3e3e3e;
+    white-space: normal;
+    display: none;
+}
+.tag-list-container .tag.showtext.active {
+    width: 400px;
+    left: 0px;
+    display: block;
+}
+.tag-list-container .full-tag-container {
+    position: relative;
+    top: 100%;
+    max-width: 432px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    padding-top: 16px;
+}
+.tag-list-container .tag-list-input {
+    font-size: 20px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    flex-grow: 2;
+}
+.tag-list-container.focused {
+    border-color: #82c3c0;
+}
+.tag .showtext{
+    margin-bottom: 80px;
+}

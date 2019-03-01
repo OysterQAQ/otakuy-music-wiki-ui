@@ -1,0 +1,224 @@
+
+.middle-div {
+    display: table;
+    width: 100%;
+    height: 100%;
+
+}
+
+.inner-middle-div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.profile-card {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    padding: 15px;
+    width: 370px;
+    height: 200px;
+    margin: -150px 0 0 -200px;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+}
+
+.profile-card:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+    z-index: -1;
+    border-radius: 7px;
+}
+
+.profile-card .card-body {
+    margin-bottom: 10px;
+}
+
+.profile-card .card-body .user-info .user-pic {
+    position: relative;
+    top: -10px;
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    border-radius: 100%;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #fff;
+    z-index: 1;
+}
+
+.profile-card .card-body .user-info .user-pic .edit {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    right: 0;
+    width: 28px;
+    height: 28px;
+    background-color: #feca4a;
+    z-index: -1;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 27px;
+    cursor: pointer;
+}
+
+.profile-card .card-body .user-info .user-pic .edit i {
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.profile-card .card-body .user-info .user-name {
+    margin: 5px 0 0 0;
+    font-weight: 400;
+    font-size: 1.3em;
+}
+
+.profile-card .card-body .user-info p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+.profile-card .card-footer .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.profile-card .card-footer .list li {
+    float: left;
+}
+
+.profile-card .card-footer .list li + li {
+    margin-left: 60px;
+}
+
+.profile-card .card-footer .list li span {
+    display: block;
+}
+
+.profile-card .card-footer .list li span + span {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.profile-card .card-footer .list li .count {
+    font-weight: 400;
+    font-size: 1.3em;
+    padding-bottom: 0px;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .profile-card {
+        width: 310px;
+        height: 250px;
+        margin: -140px 0 0 -170px;
+    }
+}
+
+.albumlist {
+    z-index: 1;
+    top: 250px;
+    position: absolute;
+    border-radius: 7px;
+    max-height: 400px;
+    left: 0px;
+    width: 370px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.albuminfo {
+    position: relative;
+    height: 80px;
+    background-color: #9890e3;
+    border-bottom: 1px solid #FFF;
+}
+
+.albuminfo > .cover {
+    border-radius: 5px;
+    cursor: pointer;
+    top: 7.5px;
+    left: 7.5px;
+    position: absolute;
+    height: 65px;
+    width: 65px;
+}
+
+.albuminfo > .title {
+    color: #FFF;
+    top: 8px;
+    left: 80px;
+    position: absolute;
+    width: 220px;
+    text-align: left;
+    text-overflow: ellipsis;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+}
+
+.albuminfo > .artist {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    width: 220px;
+    top: 28px;
+    left: 95px;
+    color: #FFF;
+    position: absolute;
+    text-align: left;
+}
+
+.albuminfo > .edit_btn {
+    top: 28px;
+    left: 320px;
+    position: absolute;
+
+}
+
+.edit_btn {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+#intro_edit {
+    left: 330px;
+    bottom: 48px;
+}
+
+.user-info > .intro {
+    text-align: center;
+    color: #fff;
+    width: 250px;
+    text-overflow: ellipsis;
+    border: none;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 15px;
+}

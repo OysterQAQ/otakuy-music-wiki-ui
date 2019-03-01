@@ -96,7 +96,7 @@ body {
 }
 
 #commitcomment {
-    background: #e3e9ed url("../img/comment.gif") 0px 0 no-repeat;
+    background: #e3e9ed url("../../src/img/comment.gif") 0px 0 no-repeat;
     background-size: 30px;
     height: 60px;
     width: 540px;

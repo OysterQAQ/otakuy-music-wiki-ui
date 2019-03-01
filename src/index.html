@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/profile-card.css">
+    <link rel="stylesheet" href="css/album.css">
 </head>
 <body>
 <div class='loginbox'>
@@ -192,9 +193,11 @@
             <div class="card-body">
                 <div class="user-info">
                     <div class="user-pic">
+                        <input  type='file' id="imageUpload" accept=".png, .jpg, .jpeg" style="display: none;"/>
+                        <label for="imageUpload">
             <span class="edit">
           <i class="fas fa-camera"></i>
-        </span>
+        </span></label>
                     </div>
                     <h3 class="user-name" id="username"></h3>
                     <input class="intro" id="intro" readonly  value="">
@@ -206,11 +209,11 @@
             <div class="card-footer">
                 <ul class="list">
                     <li class="list-item">
-                        <span class="count" id="albumcount">3</span>
+                        <span class="count" id="albumcount"></span>
                         <span>Album</span>
                     </li>
                     <li class="list-item">
-                        <span class="count" id="starcount">80</span>
+                        <span class="count" id="starcount"></span>
                         <span>Star</span>
                     </li>
 
@@ -229,6 +232,33 @@
         </div>
     </div>
 </div>
+
+<div class="album" id="album">
+    <div class="albumdetail">
+        <div class="profile-bg"></div>
+        <section class="album-container">
+            <aside class="profile-image">
+            </aside>
+            <section class="profile-info">
+                <h1 class="album-title"></h1>
+                <h1 class="album-artist"></h1>
+                <h2>简介</h2>
+                <p class="album-intro"></p>
+                <h2>曲目</h2>
+                <p class="album-tracks">
+                </p>
+            </section>
+        </section>
+        <section class="album-detail">
+        </section>
+<!--        <section class="album-statistics">
+            <p><strong>29</strong> Followers</p>
+            <p><strong>184</strong> Following</p>
+            <p><strong>6</strong> Likes</p>
+        </section>-->
+        <button class="album-icon close"></button>
+    </div>
+</div>
 <div class="mask"></div>
 </body>
 <script type="text/javascript" src="//at.alicdn.com/t/font_1048075_qw0pfyay5u9.js"></script>
@@ -239,5 +269,6 @@
 <script type="text/javascript" src="js/search.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
 <script type="text/javascript" src="js/profile-card.js"></script>
+<script type="text/javascript" src="js/album.js"></script>
 
 </html>
