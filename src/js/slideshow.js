@@ -103,8 +103,11 @@ function albumclick(e) {
                 });
                 $('.album-tracks').html(html);
                 $('.profile-image').css("background-image","url("+data.cover+")");
-
-               $('.album-detail').html('  <p>流派: '+data.genres+'<br>专辑类型: '+data.version+'<br>发行时间: '+data.pubdate+'<br>出版商: '+data.publisher+'</p>');
+                var tags='';
+                $.each(data.tags, function (index, element) {
+                    tags +=' <div class="tag">'+element.name+'</div>';
+                });
+               $('.album-detail').html('  <p>流派: '+data.genres+'<br>专辑类型: '+data.version+'<br>发行时间: '+data.pubdate+'<br>出版商: '+data.publisher+'</p>'+tags);
                 $('.mask').show();
                 $('#album').show();
 

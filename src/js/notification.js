@@ -1,13 +1,13 @@
 function notification(status,message){
     if(status){
-        $('.notification-icon ').css('background-color','#66847C');
-        $('.notification-icon ').css('color','#66847C');
-        $('.notification-icon ').css('border','2px solid #66847C;');
+        $('.notification-icon ').css('background-color','#aaefd1');
+        $('.notification-icon ').css('color','#aaefd1');
+        $('.notification-icon ').css('border','2px solid #aaefd1;');
     }
     else {
-        $('.notification-icon ').css('background-color','#FF4500');
-        $('.notification-icon ').css('color','#FF4500');
-        $('.notification-icon ').css('border','2px solid #FF4500;');
+        $('.notification-icon ').css('background-color','#ff674b');
+        $('.notification-icon ').css('color','#ff674b');
+        $('.notification-icon ').css('border','2px solid #ff674b;');
     }
     $( ".notification" ).addClass( "animate--drop-in-fade-out" );
     $('.notification-body').html(message);

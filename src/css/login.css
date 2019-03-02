@@ -7,8 +7,9 @@ button:active {
 }
 
 .container {
+    z-index: 2;
     left: 0px;
-    top: 0px;
+    top: 50px;
     right: 0px;
     bottom: 0px;
     display: none;
@@ -16,7 +17,7 @@ button:active {
     width: 100%;
     position: fixed;
     text-align: center;
-    background: rgba(0, 0, 0, 0.3);
+
 }
 .container:before {
     content: '';

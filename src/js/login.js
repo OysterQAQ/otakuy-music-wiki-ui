@@ -47,7 +47,8 @@ $('.regTag').click(function (e) {
     }
 });
 $('#avatar').on('click', function (e) {
-    if ($('.profile-card').css('display') == 'none') {
+    var profile_card=$('.profile-card')
+    if (profile_card.css('display') == 'none'||profile_card.hasClass('fadeOutDown')) {
         $.ajax({
             type: "get",
             url: "http://127.0.0.1/uers/" + JSON.parse(window.localStorage.user).id + "/albums/active?page=0",
@@ -77,10 +78,13 @@ $('#avatar').on('click', function (e) {
         });
         $('.loginbox').css('z-index', 2);
         $('.mask').show();
-        $('.profile-card').show();
+        profile_card.show();
+        profile_card.attr('class','profile-card animated fadeInUp')
+
     } else {
         $('.loginbox').css('z-index', 1);
-        $('.profile-card').hide();
+        profile_card.attr('class','profile-card animated fadeOutDown')
+       // $('.profile-card').hide();
         $('.mask').hide();
     }
 
@@ -115,7 +119,8 @@ $('#login_btn').on('click', function (e) {
             setTimeout(function () {
                 $('.container').hide();
             }, 500);
-
+            $('.mask').hide();
+            $('.beerbox').css('z-index', 1);
 
         },
         error: function () {

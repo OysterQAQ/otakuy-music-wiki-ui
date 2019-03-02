@@ -261,7 +261,7 @@ $('#get-album-suggestion').click(function () {
                     Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjNzEzOTY4ZTg2YzJjMDIyNGI1YWMxMCIsInN1YiI6IueUn-ianVFBUSIsImlhdCI6MTU1MTQ0NjEyNSwiZXhwIjoxNTUyMzEwMTI1fQ.qSX7HEjOXZbRMcoslal_Hv69XQn2WlhgY83vMYS7MGJpEDQIemU9vHWCqxoTQAl087WSLN8fWfrkHL9H0kLTuw'
                 },
                 success: function (data, textStatus, request) {
-                    notification(true,"自动匹配成功")
+                    notification(true, "自动匹配成功")
                     console.log(data)
                     data = data.data;
                     var html = '';
@@ -272,12 +272,12 @@ $('#get-album-suggestion').click(function () {
                     $('#suggest-album').html(html)
                 },
                 error: function () {
-                    notification(false,"自动匹配失败")
+                    notification(false, "自动匹配失败")
                 }
             });
         } else $('#suggest-album').hide();
     } else {
-        notification(false,"标题不能为空")
+        notification(false, "标题不能为空")
     }
 });
 
@@ -290,7 +290,7 @@ function getDoubanDetail(item) {
             Authorization: $.cookie('Authorization')
         },
         success: function (data, textStatus, request) {
-            notification(true,"自动填充成功")
+            notification(true, "自动填充成功")
             $('.tag').remove();
             data = data.data;
             var tracks = '';
@@ -316,7 +316,7 @@ function getDoubanDetail(item) {
 
         },
         error: function () {
-            notification(false,"自动填充失败")
+            notification(false, "自动填充失败")
         }
     });
 }
@@ -367,9 +367,9 @@ $('.pulse-button').click(function () {
         datatype: "application/json",
         data: JSON.stringify(album),
         success: function (data, textStatus, request) {
-            album.id=data.data.id;
+            album.id = data.data.id;
             $.ajax({
-                url: "http://127.0.0.1/albums/"+album.id+"/covers",
+                url: "http://127.0.0.1/albums/" + album.id + "/covers",
                 type: 'PUT',
                 data: formData,
                 // 告诉jQuery不要去处理发送的数据
@@ -383,22 +383,24 @@ $('.pulse-button').click(function () {
                     console.log("正在进行，请稍候");
                 },
                 success: function (data) {
-                    notification(true,"专辑发布成功,等待管理员审核")
+                    notification(true, "专辑发布成功,等待管理员审核")
                     $('.beerbox').css('z-index', 1);
                     $('.mask').hide();
+                    $('#suggest-album').html('');
+                    $('#suggest-album').hide();
                     $('#album_form').hide();
                     $('#album_form input').val('');
-
+                    $('#album-input-intro').html('');
                 },
                 error: function (data) {
-                    notification(false,"封面上传失败")
+                    notification(false, "封面上传失败")
                     console.log(data);
                 }
             });
 
         },
         error: function () {
-            notification(false,"专辑发布失败")
+            notification(false, "专辑发布失败")
         }
     });
 

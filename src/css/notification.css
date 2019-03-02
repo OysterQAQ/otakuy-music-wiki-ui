@@ -11,19 +11,19 @@
 
     background-color: #FFF;
 z-index: 10;
-    border-radius: 2px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.25);
     opacity: 0;
 }
 
 .notification-icon {
+    border-radius: 5px 0 0 5px;
     position: absolute;
     top: 50%;
     left: 0;
     width: 1.8em;
     height: 101%;
     padding: 0 0.4em;
-    background-color: #66847C;
     color: #FFF;
     font-size: 36px;
     font-weight: 300;
