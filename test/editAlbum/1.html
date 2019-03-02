@@ -3,99 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="1.css">
+    <link rel="stylesheet" href="../../src/css/editAlbum.css">
 </head>
 <body>
-<div id="header"></div>
-
-<h2>Material design form elements</h2>
 
 <form id="album_form">
     <div class="line-editable">
-        <input autocomplete="off" placeholder="专辑标题" type="text" class="Field_Input"  name="title" required />
+        <input autocomplete="off" placeholder="专辑标题" type="text" class="Field_Input"  id="album-input-title" name="title" required />
         <label>
             <div>标题</div>
         </label>
     </div>
+   <img id="get-album-suggestion" src="../../src/img/plane.svg">
+    <div id="suggest-album">
+
+    </div>
     <div class="line-editable">
-        <input autocomplete="off" placeholder="艺术家(复数使用/分隔)" type="text" class="Field_Input"  name="artist" required />
+        <input autocomplete="off" placeholder="艺术家(复数使用/分隔)" id="album-input-artists" type="text" class="Field_Input"  name="artist" required />
         <label>
-            <div>标题</div>
+            <div>艺术家</div>
+        </label>
+    </div>
+
+
+    <div class="line-editable">
+        <textarea autocomplete="off" placeholder="有限的介绍" id="album-input-intro"class="Field_Input"  name="intro"></textarea>
+        <label>
+            <div>简介</div>
+        </label>
+    </div>
+    <div class="tracks-input">
+        <input autocomplete="off" id="track-sum" placeholder="" type="text"   />
+        <div class="tip">输入歌曲数量后回车生成表单</div>
+        <div id="tracks">
+        </div>
+    </div>
+    <div class="tag-list-container">
+        <!--<span class="tag">first</span>
+        <span class="tag">second</span>
+        <span class="tag">special</span>-->
+        <input class="tag-list-input" type="text" placeholder="標簽の輸入" />
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="专辑封面" type="file" id="cover-upload" class="Field_Input"  />
+        <label>
+            <div>专辑封面</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" placeholder="发行日期" type="text" class="Field_Input"  name="pubdate"  />
+        <input autocomplete="off" id="album-input-pubdate" placeholder="发行日期" type="text" class="Field_Input"  name="pubdate"  />
         <label>
             <div>发行日期</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" placeholder="发行商" type="text" class="Field_Input"  name="publisher"  />
+        <input autocomplete="off"id="album-input-publisher" placeholder="发行商" type="text" class="Field_Input"  name="publisher"  />
         <label>
             <div>发行商</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" placeholder="专辑整体风格" type="text" class="Field_Input"  name="genres"  />
+        <input autocomplete="off"id="album-input-genres" placeholder="专辑整体风格" type="text" class="Field_Input"  name="genres"  />
         <label>
             <div>风格</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" placeholder="(通常盘、限定盘.etc)" type="text" class="Field_Input"  name="version"  />
+        <input autocomplete="off"id="album-input-version" placeholder="(通常盘、限定盘.etc)" type="text" class="Field_Input"  name="version"  />
         <label>
             <div>版本</div>
         </label>
     </div>
-
-    <div class="line-editable">
-        <textarea autocomplete="off" placeholder="有限的介绍" class="Field_Input"  name="intro"></textarea>
-        <label>
-            <div>简介</div>
-        </label>
-    </div>
-
-<!--
-    <div class="line-editable">
-        <input placeholder="Input02" type="text" class="Field_Input" id="input02" name="input02" value="333 123456789" />
-
-        <label>
-            <div>Input02</div>
-        </label>
-    </div>
-
-    <div class="line-editable">
-        <select placeholder="Select01" class="Field_Input" id="select01" name="select01">
-            <option value="" disabled selected style="display:none">Select01</option>
-            <option value="Option #1">Option #1</option>
-            <option value="Option #2">Option #2</option>
-            <option value="Option #3">Option #3</option>
-        </select>
-
-        <label>
-            <div>Select01</div>
-        </label>
-    </div>-->
-
-
-<!--
-
-    <div style="margin-top:15px; text-align:left; max-width:350px; margin:auto;">
-        <input type="checkbox" value="1" checked="checked" id="privacy" name="privacy" />
-        <label for="privacy">Accetto la privacy policy</label>
-    </div>
--->
-    <div class="tag-list-container">
-        <span class="tag">first</span>
-        <span class="tag">second</span>
-        <span class="tag">special</span>
-        <input class="tag-list-input" type="text" placeholder="標簽の輸入" />
+    <div class='container'>
+        <span class='pulse-button'>提交</span>
     </div>
 </form>
+
 
 <div style="text-align: center;">
     <a href="http://www.giuseppegerbino.com">www.giuseppegerbino.com</a>
 </div>
 </body>
-<script type="text/javascript" src="1.js"></script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../src/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../src/js/editAlbum.js"></script>
 </html>

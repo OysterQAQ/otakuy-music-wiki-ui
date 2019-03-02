@@ -12,11 +12,29 @@ $(".loginbox").hover(function () {
 $('.loginbox').click(function (e) {
     e.preventDefault();
     if (!isLogin) {
-        if ($('.container').css('display')=='none')
+        if ($('.container').css('display') == 'none') {
+            $('.loginbox').css('z-index', 2);
             $('.container').show();
-        else
-        $('.container').hide();
+        } else{
+            $('.loginbox').css('z-index', 1);
+            $('.container').hide();
+        }
     }
+});
+$('#beerimg').click(function (e) {
+    e.preventDefault();
+    if (isLogin) {
+    if ($('#album_form').css('display') == 'none') {
+        $('.beerbox').css('z-index', 2);
+        $('.mask').show();
+        $('#album_form').show();
+    } else {
+        $('#album_form').hide();
+        $('.mask').hide();
+        $('.beerbox').css('z-index', 1);
+    }}
+    else notification(false,"请先登录")
+
 });
 
 $("#helpbox").hover(function () {

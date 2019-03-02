@@ -111,7 +111,7 @@ function albumclick(e) {
             },
             error: function () {
                 //请求出错处理
-                alert("请先登录")
+                notification(false,"请先登录");
             }
 
         });

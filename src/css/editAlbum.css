@@ -1,38 +1,13 @@
-body {
-    font-family: Sans-serif;
-    background-color: #f6f6f6;
-    margin: 0;
-    padding: 0;
-}
-a {
-    color: #f0932e;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    padding: 3px;
-    transition: all 0.2s ease-in-out 0s;
-    -webkit-transition: all 0.2s ease-in-out 0s;
-    -moz-transition: all 0.2s ease-in-out 0s;
-    -ms-transition: all 0.2s ease-in-out 0s;
-    -o-transition: all 0.2s ease-in-out 0s;
-}
-a:hover {
-    border-bottom: 1px solid #f0932e;
-}
-#header {
-    background-color: #f0932e;
-    color: #fff;
-    height: 171px;
-    position: absolute;
-    top: 0;
+
+#album_form {
+    z-index: 2;
+    display: none;
+    position: fixed;
+    margin: auto;
     left: 0;
     right: 0;
-    width: 100%;
-    box-shadow: inset 0px 20px 0px rgba(150, 50, 30, 0.2);
-    z-index: -1;
-}
-#album_form {
-    position: relative;
-    margin: 30px auto;
+    top: 0;
+    bottom: 0;
     width: 100%;
     height: 700px;
     overflow-y: auto;
@@ -48,29 +23,25 @@ a:hover {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
-h2 {
-    color: #fff;
-    text-align: center;
-    font-weight: 400;
-    margin: 50px auto -15px auto;
-    font-family: Open Sans;
-    font-size: 30px;
-    text-shadow: 1px 1px 0px rgba(60, 10, 10, 0.1);
-}
+
+
 .box-shadow-none {
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
 }
+
 .Field_Input {
     width: 100%;
 }
+
 .line-editable {
     position: relative;
     max-width: 350px;
     margin: 10px auto;
     z-index: 1;
 }
+
 .line-editable input,
 .line-editable select,
 .line-editable textarea {
@@ -106,12 +77,14 @@ h2 {
     -ms-transition: all 0.2s ease-in-out 0s;
     -o-transition: all 0.2s ease-in-out 0s;
 }
+
 .line-editable input:-webkit-autofill,
 .line-editable select:-webkit-autofill,
 .line-editable textarea:-webkit-autofill {
     -webkit-text-fill-color: #666;
     -webkit-box-shadow: 0 30px 50px -15px white inset !important;
 }
+
 .line-editable input .line-placeholder,
 .line-editable select .line-placeholder,
 .line-editable textarea .line-placeholder {
@@ -129,6 +102,7 @@ h2 {
     -ms-transition: all 0.2s ease-in-out 0s;
     -o-transition: all 0.2s ease-in-out 0s;
 }
+
 .line-editable input::-webkit-input-placeholder,
 .line-editable select::-webkit-input-placeholder,
 .line-editable textarea::-webkit-input-placeholder {
@@ -146,6 +120,7 @@ h2 {
     -ms-transition: all 0.2s ease-in-out 0s;
     -o-transition: all 0.2s ease-in-out 0s;
 }
+
 .line-editable input:-ms-input-placeholder,
 .line-editable select:-ms-input-placeholder,
 .line-editable textarea:-ms-input-placeholder,
@@ -169,6 +144,7 @@ h2 {
     -ms-transition: all 0.2s ease-in-out 0s;
     -o-transition: all 0.2s ease-in-out 0s;
 }
+
 .line-editable input + label,
 .line-editable select + label,
 .line-editable textarea + label {
@@ -180,6 +156,7 @@ h2 {
     font-size: 12px;
     color: #c5c6c8;
 }
+
 .line-editable input:focus .line-placeholder-hasValue,
 .line-editable select:focus .line-placeholder-hasValue,
 .line-editable textarea:focus .line-placeholder-hasValue,
@@ -196,6 +173,7 @@ h2 {
     -o-transform: translate(0px, -20px);
     transform: translate(0px, -20px);
 }
+
 .line-editable input:focus::-webkit-input-placeholder,
 .line-editable select:focus::-webkit-input-placeholder,
 .line-editable textarea:focus::-webkit-input-placeholder,
@@ -212,6 +190,7 @@ h2 {
     -o-transform: translate(0px, -20px);
     transform: translate(0px, -20px);
 }
+
 .line-editable input:focus:-ms-input-placeholder,
 .line-editable select:focus:-ms-input-placeholder,
 .line-editable textarea:focus:-ms-input-placeholder,
@@ -240,6 +219,7 @@ h2 {
     -o-transform: translate(0px, -20px);
     transform: translate(0px, -20px);
 }
+
 .line-editable input:focus + label,
 .line-editable select:focus + label,
 .line-editable textarea:focus + label,
@@ -251,6 +231,7 @@ h2 {
     display: block !important;
     opacity: 1;
 }
+
 .line-editable input:hover,
 .line-editable select:hover,
 .line-editable textarea:hover,
@@ -259,22 +240,26 @@ h2 {
 .line-editable textarea:focus {
     border-bottom-color: #f0932e;
 }
+
 .line-editable input:focus,
 .line-editable select:focus,
 .line-editable textarea:focus {
     background-position: left bottom;
     background-size: 100% 1px;
 }
+
 .line-editable input:focus::-webkit-input-placeholder,
 .line-editable select:focus::-webkit-input-placeholder,
 .line-editable textarea:focus::-webkit-input-placeholder {
     color: #f0932e;
 }
+
 .line-editable input:focus + label,
 .line-editable select:focus + label,
 .line-editable textarea:focus + label {
     color: #f0932e;
 }
+
 .line-editable select {
     color: #999;
     font-size: 12px;
@@ -285,30 +270,36 @@ h2 {
     background-size: 12px 12px !important;
     position: relative;
 }
+
 .line-editable select:focus {
     background-position: top right !important;
 }
+
 .line-editable select option,
 .line-editable select.hasValue {
     font-size: 16px;
     color: #666;
     text-transform: lowercase;
 }
+
 .line-editable select option:first-letter,
 .line-editable select.hasValue:first-letter {
     text-transform: capitalize;
 }
+
 .line-editable textarea {
     max-width: 100%;
     line-height: 125%;
     resize: vertical;
     transition-property: background, border, color, padding;
 }
+
 .line-editable textarea:focus,
 .line-editable textarea.hasValue {
     height: 80px;
     padding: 4px 0px;
 }
+
 .line-editable label,
 .line-editable .hasValue label {
     position: absolute;
@@ -327,33 +318,80 @@ h2 {
     -o-transition: all 0.2s ease-in-out 0s;
     z-index: -1;
 }
+
 .line-editable label div,
 .line-editable .hasValue label div {
     width: 100%;
     margin: auto;
 }
 
+.tracks-input {
+    position: relative;
 
+}
 
+#track-sum {
+    position: relative;
+    margin-left: 90px;
+    left: -192px;
+    border: 2px solid rgba(223, 223, 223, 0.5);
+    font-size: 20px;
+    padding: .25em .5em .3125em;
+    width: 30px;
+    border-radius: .25em;
+    background: transparent;
+}
 
+.tip {
+    width: 350px;
+    top: -38px;
+    left: 160px;
+    text-align: left;
+    margin-top: 4px;
+    position: relative;
+    color: rgba(139, 139, 139, 0.71);
+    font-size: 20px;
+}
 
+#suggest-album {
 
+    display: none;
+    margin: 0;
+    position: relative;
+    left: 80px;
+width: 350px;
+    height: 120px;
+    overflow-x: auto;
+    overflow-y: hidden;
 
+}
+.suggest-item{
 
+    position: relative;
+    width: 80px;
+    height: 100px;
+    margin-left: 20px;
+}
+
+.tracks {
+
+    position: relative;
+}
 
 
 .tag-list-container {
     position: relative;
     width: 348px;
-    left: 82px;
+    left: 90px;
     border-bottom: 1px solid #ccc;
     display: flex;
     flex-wrap: wrap;
     cursor: text;
 
     transition: border-color .4s ease;
-    margin-bottom: 80px;
+
 }
+
 .tag-list-container .tag {
     max-width: 80px;
     white-space: nowrap;
@@ -367,20 +405,24 @@ h2 {
     border-radius: 4px;
     transition: all .4s ease;
 }
+
 .tag-list-container .tag.highlighted, .tag-list-container .tag:hover {
     background-color: #deb356;
 }
+
 .tag-list-container .tag.showtext {
 
     background-color: #3e3e3e;
     white-space: normal;
     display: none;
 }
+
 .tag-list-container .tag.showtext.active {
     width: 400px;
     left: 0px;
     display: block;
 }
+
 .tag-list-container .full-tag-container {
     position: relative;
     top: 100%;
@@ -389,6 +431,7 @@ h2 {
     transform: translateX(-50%);
     padding-top: 16px;
 }
+
 .tag-list-container .tag-list-input {
     font-size: 20px;
     box-sizing: border-box;
@@ -396,9 +439,85 @@ h2 {
     outline: none;
     flex-grow: 2;
 }
+
 .tag-list-container.focused {
     border-color: #82c3c0;
 }
-.tag .showtext{
+
+.tag .showtext {
     margin-bottom: 80px;
+}
+
+.submit-button-container {
+    width: 200px;
+height: 200px;
+    margin: 0 auto 0;
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+    background: #fff;
+}
+
+.pulse-button {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    display: block;
+    width: 100px;
+    height: 100px;
+    font-size: 1.3em;
+    font-weight: light;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 100px;
+    letter-spacing: -1px;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    background: #5a99d4;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5);
+    -webkit-animation: pulse 1.5s infinite;
+}
+
+.pulse-button:hover {
+    -webkit-animation: none;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+    70% {
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+    }
+    100% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+    }
+}
+#get-album-suggestion{
+    position: absolute;
+    left: 460px;
+    top: 40px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+.item-cover{
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
 }

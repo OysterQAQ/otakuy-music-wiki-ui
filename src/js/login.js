@@ -65,7 +65,6 @@ $('#avatar').on('click', function (e) {
                     html += ('<div class="albuminfo" album_id="' + element.id) + '"><img class="cover" src="' + element.cover + '"><div class="title">' + element.title + '</div><div class="artist">' + artist + '</div><svg  class="edit_btn" id="' + element.id + '"><use xlink:href="#icon-edit"></use></svg></div>'
 
                 });
-
                 $('#albumlist').html(html);
                 $('#albumcount').html(albums.length);
                 $('#starcount').html(JSON.parse(window.localStorage.user).star);
@@ -76,10 +75,11 @@ $('#avatar').on('click', function (e) {
                 alert("获取专辑数据失败")
             }
         });
+        $('.loginbox').css('z-index', 2);
         $('.mask').show();
         $('.profile-card').show();
     } else {
-
+        $('.loginbox').css('z-index', 1);
         $('.profile-card').hide();
         $('.mask').hide();
     }
@@ -101,6 +101,7 @@ $('#login_btn').on('click', function (e) {
         success: function (data, textStatus, request) {
             $.cookie('Authorization', "Bearer " + request.getResponseHeader('Authorization'), {expires: 20});
             $('.login_info').get(0).innerHTML = "登录成功";
+            notification(true,"登录成功");
             var user = data.data
             window.localStorage.setItem("user", JSON.stringify(user))
             console.log();
@@ -122,6 +123,7 @@ $('#login_btn').on('click', function (e) {
             inP.parent('.f_row').addClass('shake');
             $('.password').val('');
             $('.login_info').get(0).innerHTML = "登录失败";
+            notification(false,"登录失败")
             setTimeout(function () {
                 $('.login_info').get(0).innerHTML = "GO";
             }, 700);
@@ -148,12 +150,14 @@ $('#register_btn').on('click', function (e) {
         success: function (data, textStatus, request) {
             console.log(data)
             $('#register_btn').html("注册成功");
+            notification(true,"注册成功");
             setTimeout(function () {
                 $('.formBox').removeClass('level-reg').addClass('level-login');
             }, 700);
         },
         error: function () {
             $('#register_btn').html("注册失败");
+            notification(false,"注册失败");
             inP.parent('.f_row').addClass('shake');
             setTimeout(function () {
                 $('#register_btn').html("CREATE");
@@ -174,12 +178,14 @@ $('#reset_btn').on('click', function (e) {
         success: function (data, textStatus, request) {
             console.log(data)
             $('#reset_btn').html("发送成功");
+            notification(true,"发送成功");
             setTimeout(function () {
                 $('.formBox').removeClass('level-forget').addClass('level-login');
             }, 700);
         },
         error: function () {
             $('#reset_btn').html("发送失败");
+            notification(false,"发送失败");
             inP.parent('.f_row').addClass('shake');
             setTimeout(function () {
                 $('#reset_btn').html("RESET");
@@ -201,7 +207,7 @@ $('#verification_img').on('click', function () {
                 $("#verification_img").attr("src", "data:image/jpeg;base64," + data.data.imageBase64);
             },
             error: function () {
-                alert("获取验证码失败")
+                notification(false,"获取验证码失败");
             }
         });
     }
@@ -217,7 +223,7 @@ $('#goto_register_form').on('click', function () {
             $("#verification_img").attr("src", "data:image/jpeg;base64," + data.data.imageBase64);
         },
         error: function () {
-            alert("获取验证码失败")
+            notification(false,"获取验证码失败");
         }
     });
 });
