@@ -236,17 +236,7 @@ $('input, select, textarea').on('load autocompletechange change', function() {
 
 */
 
-$(document).keypress(function (e) {
-    console.log($("#track-sum").is(":focus"))
-    if (e.which == 13 && $("#track-sum").is(":focus")) {
-        var html = '';
-        for (var i = 0; i < $('#track-sum').val(); i++) {
-            html += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="pubdate"  /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
-        }
-        $('#tracks').html(html)
 
-    }
-});
 
 $('#get-album-suggestion').click(function () {
 
@@ -321,7 +311,7 @@ function getDoubanDetail(item) {
     });
 }
 
-$('.pulse-button').click(function () {
+$('#submit-button').click(function () {
     /*   console.log( $('#album-input-artists').val().split('/').map(function (num) {
            var artist={};
            artist.name=num;
@@ -352,6 +342,13 @@ $('.pulse-button').click(function () {
     album.publisher = $('#album-input-publisher').val();
     album.genres = $('#album-input-genres').val();
     album.version = $('#album-input-version').val();
+    album.downloadRes={};
+    album.downloadRes.permission=$('#album-input-res-permission').val();
+    album.downloadRes.url=$('#album-input-res').val();
+    album.downloadRes.password=$('#album-input-res-password').val();
+    album.downloadRes.unzipKey=$('#album-input-res-zip').val();
+if(album.downloadRes.permission=='')
+    album.downloadRes.permission=0;
     console.log(album)
     var file = $("#cover-upload").get(0).files[0];
     var formData = new FormData();

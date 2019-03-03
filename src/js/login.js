@@ -8,6 +8,7 @@ $(document).ready(function () {
         $('#starcount').html(user.star);
         $('#intro').val(user.intro);
         isLogin = true;
+        notification(true,"自动登录成功")
     }
 
 });
@@ -63,7 +64,7 @@ $('#avatar').on('click', function (e) {
                     var artist = element.artists.map(function (item) {
                         return item.name;
                     }).join(' ');
-                    html += ('<div class="albuminfo" album_id="' + element.id) + '"><img class="cover" src="' + element.cover + '"><div class="title">' + element.title + '</div><div class="artist">' + artist + '</div><svg  class="edit_btn" id="' + element.id + '"><use xlink:href="#icon-edit"></use></svg></div>'
+                    html += ('<div class="albuminfo" album_id="' + element.id) + '"><img class="cover" src="' + element.cover + '"><div class="title">' + element.title + '</div><div class="artist">' + artist + '</div><svg  class="edit_btn" id="' + element.id + '"><use xlink:href="#icon-edit2-copy"></use></svg></div>'
 
                 });
                 $('#albumlist').html(html);
@@ -73,7 +74,7 @@ $('#avatar').on('click', function (e) {
 
             },
             error: function () {
-                alert("获取专辑数据失败")
+                notification(false,"获取用户专辑数据失败")
             }
         });
         $('.loginbox').css('z-index', 2);

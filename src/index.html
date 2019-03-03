@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/notification.css">
     <link rel="stylesheet" href="css/editAlbum.css">
     <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/comment.css">
 </head>
 <body>
 <div class='loginbox'>
@@ -233,7 +234,7 @@
             <div class="title"></div>
             <div class="artist"></div>
             <svg  class="edit_btn">
-                <use xlink:href="#icon-edit"></use>
+                <use xlink:href="#icon-edit2-copy"></use>
             </svg>
         </div>
     </div>
@@ -252,28 +253,64 @@
                 <p class="album-intro"></p>
                 <h2>曲目</h2>
                 <p class="album-tracks">
+                <h2>下载资源</h2>
+                <p class="album-res">
                 </p>
             </section>
         </section>
         <section class="album-detail">
         </section>
 
-<!--        <section class="album-statistics">
-            <p><strong>29</strong> Followers</p>
-            <p><strong>184</strong> Following</p>
-            <p><strong>6</strong> Likes</p>
-        </section>-->
+        <section class="album-statistics">
+            <svg id="comment-button">
+                <use xlink:href="#icon-pinglun"></use>
+            </svg>
+            <div class="control-center"  id="star-button">
+                <ul class="right-sidebar">
+                    <li class="count">15</li>
+                    <li class="count">20</li>
+                </ul>
+                <div class="option-btn"></div>
+                <ul class="left-sidebar">
+                    <li class="count">5</li>
+                    <li class="count">10</li>
+                </ul>
+            </div>
+            <svg id="rivision-button">
+                <use xlink:href="#icon-bianji"></use>
+            </svg>
+        </section>
         <button class="album-icon close"></button>
     </div>
+    <div id="commentbox">
+        <div id="commentlist">
+            <div class="comment" user-id="123456" user-username="Miro Badev">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg"/>
+                <div class="userinfo" >
+                    <strong>Miro Badev</strong>
+                </div>
+                <div class="content">@ <a href="#">VtoEXL</a> xxxxxxx</div>
+                <div class="createTime">2019-10-10</div>
+            </div>
+        </div>
+        <form id="commitcomment">
+            <input type="text" id="to-username" readonly="readonly" value="@ up" to_id="" to_name=""/>
+            <input type="text" id="commentfield" placeholder="(●'◡'●)ﾉ♥評論の輸入"/>
+
+        </form>
+        <div class="triangle"></div>
+    </div>
 </div>
-<form id="album_form">
+<form id="album_form" album-id="">
     <div class="line-editable">
         <input autocomplete="off" placeholder="专辑标题" type="text" class="Field_Input"  id="album-input-title" name="title" required />
         <label>
             <div>标题</div>
         </label>
     </div>
-    <img id="get-album-suggestion" src="img/plane.svg">
+    <svg id="get-album-suggestion">
+        <use xlink:href="#icon-xunhuan"></use>
+    </svg>
     <div id="suggest-album">
 
     </div>
@@ -299,6 +336,30 @@
     </div>
     <div class="tag-list-container">
         <input class="tag-list-input" type="text" placeholder="標簽の輸入" />
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" id="album-input-res" placeholder="仅供学习的下载链接" type="text" class="Field_Input"  name="res"  />
+        <label>
+            <div>资源链接</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" id="album-input-res-password" placeholder="资源链接密码(若存在)" type="text" class="Field_Input"  name="res-password"  />
+        <label>
+            <div>资源链接密码</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" id="album-input-res-zip" placeholder="资源压缩密码(若存在)" type="text" class="Field_Input"  name="res-zip"  />
+        <label>
+            <div>资源压缩密码</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" id="album-input-res-permission" placeholder="设置star高于一定数目的用户才可以查看(不填写则为0)" type="text" class="Field_Input"  name="res-permission"  />
+        <label>
+            <div>查看权限</div>
+        </label>
     </div>
     <div class="line-editable">
         <input autocomplete="off" placeholder="专辑封面" type="file" id="cover-upload" class="Field_Input"  />
@@ -331,7 +392,7 @@
         </label>
     </div>
     <div class='submit-button-container'>
-        <span class='pulse-button'>   </span>
+        <img id="submit-button" src="img/plane.svg">
     </div>
 </form>
 
@@ -345,10 +406,11 @@
 </div>
 <div class="mask"></div>
 </body>
-<script type="text/javascript" src="//at.alicdn.com/t/font_1048075_ln5egq0sm6q.js"></script>
+<script type="text/javascript" src="//at.alicdn.com/t/font_1048075_0v19j7sj9zb.js"></script>
 <script type="text/javascript" src="js/jq.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/notification.js"></script>
+<script type="text/javascript" src="js/keypress.js"></script>
 <script type="text/javascript" src="js/slideshow.js"></script>
 <script type="text/javascript" src="js/icon_animation.js"></script>
 <script type="text/javascript" src="js/search.js"></script>
@@ -356,5 +418,6 @@
 <script type="text/javascript" src="js/profile-card.js"></script>
 <script type="text/javascript" src="js/album.js"></script>
 <script type="text/javascript" src="js/editAlbum.js"></script>
+<script type="text/javascript" src="js/comment.js"></script>
 
 </html>

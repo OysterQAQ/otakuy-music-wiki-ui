@@ -28,13 +28,7 @@ $.ajax({
 
     },
     error: function () {
-        //请求出错处理
-        inP.parent('.f_row').addClass('shake');
-        inP.val('');
-        $('.login_info').get(0).innerHTML = "登录失败";
-        setTimeout(function () {
-            $('.login_info').get(0).innerHTML = "GO";
-        }, 700);
+      notification(false,"页面初始化失败")
     }
 });
 
@@ -108,7 +102,11 @@ function albumclick(e) {
                     tags +=' <div class="tag">'+element.name+'</div>';
                 });
                $('.album-detail').html('  <p>流派: '+data.genres+'<br>专辑类型: '+data.version+'<br>发行时间: '+data.pubdate+'<br>出版商: '+data.publisher+'</p>'+tags);
+
+               $('.album-res').html('下载链接: <a href="'+data.downloadRes.url+'" target="view_window">'+data.downloadRes.url+'</a><br/>链接密码: '+data.downloadRes.password+'<br/>解压密码: '+data.downloadRes.unzipKey)
                 $('.mask').show();
+                $('#album').attr('album-id',data.id)
+                $('#album').attr('owner',data.owner)
                 $('#album').show();
 
             },

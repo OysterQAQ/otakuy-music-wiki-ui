@@ -1,25 +1,8 @@
-* {
-    margin: 0px;
-    padding: 0px;
-}
-
-body {
-    margin: 0;
-    background: #DEDEDE;
-    color: #5a6674;
-    font-size: 13px;
-    font-family: 'Arial', sans-serif;
-    overflow-x: hidden;
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: -25% 50%;
-    background-attachment: fixed;
-
-}
 
 #commentbox {
-    left: 0px;
-    top: 0px;
+    display: none;
+    left: 70px;
+    top: 50px;
     right: 0px;
     bottom: 0px;
     margin: auto;
@@ -28,9 +11,7 @@ body {
     border-radius: 6px;
     overflow: hidden;
     height: 480px;
-    position: fixed;
-
-
+    position: absolute;
 }
 
 #commentlist {
@@ -41,6 +22,7 @@ body {
     width: 500px;
     height: 400px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .comment {

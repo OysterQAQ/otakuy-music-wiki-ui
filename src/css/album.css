@@ -1,16 +1,17 @@
 
-.album{
+.album {
     z-index: 2;
     display: none;
-    margin:auto;
-         left:0;
-         right:0;
-         top:0;
-         bottom:0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     position: fixed;
     height: 800px;
     width: 700px;
 }
+
 .albumdetail {
     top: 50px;
     animation: loadProfile 0.6s ease-in-out;
@@ -24,7 +25,7 @@
 }
 
 .profile-bg {
-   margin-bottom: 50px;
+    margin-bottom: 50px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -45,8 +46,9 @@
     max-height: 720px;
 
 }
-.album-detail{
-    top:270px;
+
+.album-detail {
+    top: 270px;
     left: 80px;
     max-width: 190px;
     max-height: 540px;
@@ -94,12 +96,12 @@
 
 h1.album-title {
     text-overflow: ellipsis;
-width: 400px;
+    width: 400px;
     overflow: hidden;
 
     white-space: nowrap;
     color: #FFF;
-    animation: titleEffect 1s cubic-bezier(0,0.2,0.4,1);
+    animation: titleEffect 1s cubic-bezier(0, 0.2, 0.4, 1);
     top: -60px;
     left: 0px;
     font-size: 20px;
@@ -107,7 +109,7 @@ width: 400px;
 
 h1.album-artist {
     color: #FFF;
-    animation: titleEffect 1s cubic-bezier(0,0,0.3,1);
+    animation: titleEffect 1s cubic-bezier(0, 0, 0.3, 1);
     font-size: 20px;
     top: -25px;
     left: 10px;
@@ -128,40 +130,40 @@ h1.album-artist {
     line-height: 1.5rem;
 
 }
-.album-intro{
+
+.album-intro {
     max-height: 150px;
     overflow-y: auto;
 }
-.album-tracks{
-    max-height: 200px;
+
+.album-tracks {
+    max-height: 150px;
     overflow-y: auto;
 }
 
 
 .album-statistics {
-position:  absolute;
-top: 570px;
-left: 200px;
-    margin-left: 75px;
+    position: absolute;
+    top: 618px;
+
+    height: 50px;
+    left: 150px;
     line-height: 2rem;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.album-statistics p {
-    margin: 3%;
-    flex: auto;
-    color: #f63d47;
+.album-statistics svg {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    margin: 0 20px 0 20px;
 }
 
-.album-statistics p strong {
-    font-size: 1.4rem;
-    color: #000;
-    font-weight: 200;
-    margin-right: 0.3rem;
+.album-statistics svg:hover {
+    filter: drop-shadow(0 4px 9px rgba(245,61,71, 0.25));
 }
-
 .album-icon {
     background: transparent no-repeat center;
     background-size: contain;
@@ -205,20 +207,25 @@ left: 200px;
         margin: 3%;
         height: 97%;
     }
+
     .container {
         height: 86%;
         flex-direction: column;
     }
+
     .profile-image {
         height: 40%;
         width: calc(100% - 90px);
     }
+
     .profile-bg {
         width: 100%;
     }
+
     h1.title {
         left: 10px;
     }
+
     h1.artist {
         left: 60px;
     }
@@ -244,7 +251,7 @@ left: 200px;
 }
 
 @keyframes loadProfile {
-    from{
+    from {
         transform: translateY(100px);
         opacity: 0;
     }
@@ -267,7 +274,7 @@ left: 200px;
 
 @keyframes titleEffect {
     from {
-        opacity:0;
+        opacity: 0;
         transform: translateX(-75px);
     }
     to {
@@ -276,7 +283,6 @@ left: 200px;
     }
 
 }
-
 
 
 .tag-area {
@@ -303,4 +309,224 @@ section .tag {
     margin: 0 5px 5px 0;
     border-radius: 4px;
     overflow: hidden;
+}
+
+
+.control-center{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:row-reverse;
+}
+
+.option-btn {
+    background-color: #f63d47;
+    background-image: url("../img/star.svg");
+    background-size:50px 50px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+    position: relative;
+    cursor: pointer;
+    z-index: 9;
+}
+.option-btn:hover{
+    filter: drop-shadow(0 4px 9px rgba(245,61,71, 0.25));
+}
+.option-btn:after{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+    background-position: center center;
+    background-size: 25px;
+    background-repeat: no-repeat;
+}
+
+.option-btn:before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hiddden;
+    transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+
+}
+
+.option-btn.open:after{
+    opacity: 0;
+    visibility: hiddden;
+    transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+}
+
+.option-btn.open:before{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .5s ease-in-out, visibility .5s ease-in-out;
+}
+
+.right-sidebar{
+    list-style: none;
+    background-color: #f63d47;
+    height: 40px;
+    padding: 0 25px 0 25px;
+    margin: 0;
+    margin-left: -25px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 20px 2px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.right-sidebar li{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px;
+    height: 100%;
+
+    margin-left: 0px;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.right-sidebar li:nth-child(1){
+
+}
+
+.right-sidebar li:nth-child(2){
+
+}
+.count{
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #FFFFFF;
+
+}
+.count:hover{
+    background-color: #f60008;
+}
+
+.left-sidebar{
+    list-style: none;
+    background-color: #f63d47;
+    height: 40px;
+    padding: 0 25px 0 25px;
+    margin: 0;
+    margin-right: -25px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 20px 2px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.left-sidebar li{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px;
+    height: 100%;
+
+    margin-right: 0px;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.left-sidebar li:nth-child(2){
+
+}
+
+.left-sidebar li:nth-child(1){
+
+}
+
+.right-sidebar,
+.left-sidebar {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.open .right-sidebar {
+    animation-name: rightslide;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.open .left-sidebar {
+    animation-name: leftslide;
+    animation-duration: .5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+.open .right-sidebar li:nth-child(1),
+.open .left-sidebar li:nth-child(2) {
+    animation-name: fadeIn;
+    animation-duration: .3s;
+    animation-delay: .4s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+}
+
+.open .right-sidebar li:nth-child(2),
+.open .left-sidebar li:nth-child(1) {
+    animation-name: fadeIn;
+    animation-duration: .3s;
+    animation-delay: .5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes rightslide {
+    from {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-30%,0);
+    }
+
+    to {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0,0);
+    }
+}
+
+@keyframes leftslide {
+    from {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(30%,0);
+    }
+
+    to {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0,0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opcity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

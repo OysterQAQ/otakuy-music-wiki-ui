@@ -336,8 +336,8 @@
     left: -192px;
     border: 2px solid rgba(223, 223, 223, 0.5);
     font-size: 20px;
-    padding: .25em .5em .3125em;
-    width: 30px;
+    padding: 5px 5px 5px;
+    width: 40px;
     border-radius: .25em;
     background: transparent;
 }
@@ -382,7 +382,7 @@ width: 350px;
 .tag-list-container {
     position: relative;
     width: 348px;
-    left: 90px;
+    left: 80px;
     border-bottom: 1px solid #ccc;
     display: flex;
     flex-wrap: wrap;
@@ -450,70 +450,23 @@ width: 350px;
 
 .submit-button-container {
     width: 200px;
-height: 200px;
+height: 100px;
     margin: 0 auto 0;
     -webkit-perspective: 1000;
     -webkit-backface-visibility: hidden;
     background: #fff;
 }
-
-.pulse-button {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
-    display: block;
-    width: 100px;
-    height: 100px;
-    font-size: 1.3em;
-    font-weight: light;
-    font-family: 'Trebuchet MS', sans-serif;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 100px;
-    letter-spacing: -1px;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    background: #5a99d4;
+#submit-button{
+    width: 80px;
+    height: 80px;
     cursor: pointer;
-    box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5);
-    -webkit-animation: pulse 1.5s infinite;
-}
-
-.pulse-button:hover {
-    -webkit-animation: none;
-}
-
-@-webkit-keyframes pulse {
-    0% {
-        -moz-transform: scale(0.9);
-        -ms-transform: scale(0.9);
-        -webkit-transform: scale(0.9);
-        transform: scale(0.9);
-    }
-    70% {
-        -moz-transform: scale(1);
-        -ms-transform: scale(1);
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
-    }
-    100% {
-        -moz-transform: scale(0.9);
-        -ms-transform: scale(0.9);
-        -webkit-transform: scale(0.9);
-        transform: scale(0.9);
-        box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
-    }
 }
 #get-album-suggestion{
     position: absolute;
     left: 460px;
     top: 40px;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     cursor: pointer;
 }
 .item-cover{

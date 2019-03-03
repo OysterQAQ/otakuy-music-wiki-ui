@@ -146,14 +146,15 @@
     width: 370px;
     overflow-y: auto;
     overflow-x: hidden;
+    background-color: #FFF;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .albuminfo {
     position: relative;
     height: 80px;
-    background-color: #9890e3;
-    border-bottom: 1px solid #FFF;
+
+    border-bottom: 1px solid #5a6674;
 }
 
 .albuminfo > .cover {
@@ -167,7 +168,7 @@
 }
 
 .albuminfo > .title {
-    color: #FFF;
+
     top: 8px;
     left: 80px;
     position: absolute;
@@ -176,19 +177,19 @@
     text-overflow: ellipsis;
 
     overflow: hidden;
-
+color: #3e3e3e;
     white-space: nowrap;
 }
 
 .albuminfo > .artist {
     overflow: hidden;
+    color: #3e3e3e;
     text-overflow: ellipsis;
     white-space: nowrap;
 
     width: 220px;
     top: 28px;
     left: 95px;
-    color: #FFF;
     position: absolute;
     text-align: left;
 }
