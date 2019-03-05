@@ -208,47 +208,17 @@ const tagsModule = ((_config) => {
         addTag: addTag
     };
 })();
-
-
-/*
-
-var $formElements = $('input, textarea');
-var $selects = $('select option:selected:not([disabled])').parent();
-var $autofill = $('input:-webkit-autofill').length > 0;
-$formElements.add($selects, $autofill);
-
-$formElements.each(function() {
-    $selects.addClass('hasValue');
-    if( this.value ) {
-        $(this).addClass('hasValue');
-    } else {
-        $(this).removeClass('hasValue');
-    }
-});
-
-$('input, select, textarea').on('load autocompletechange change', function() {
-    if( this.value ) {
-        $(this).addClass('hasValue');
-    } else {
-        $(this).removeClass('hasValue');
-    }
-});
-
-*/
-
-
-
 $('#get-album-suggestion').click(function () {
 
-    if ($('#album-input-title').val() != '') {
+    if ($('.album-input-title').val() != '') {
         if ($('#suggest-album').css('display') == 'none') {
             $('#suggest-album').css('display', '-webkit-box');
             $.ajax({
                 type: "get",
-                url: "http://127.0.0.1/douban?title=" + $('#album-input-title').val(),
+                url: "http://127.0.0.1/douban?title=" + $('.album-input-title').val(),
                 contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjNzEzOTY4ZTg2YzJjMDIyNGI1YWMxMCIsInN1YiI6IueUn-ianVFBUSIsImlhdCI6MTU1MTQ0NjEyNSwiZXhwIjoxNTUyMzEwMTI1fQ.qSX7HEjOXZbRMcoslal_Hv69XQn2WlhgY83vMYS7MGJpEDQIemU9vHWCqxoTQAl087WSLN8fWfrkHL9H0kLTuw'
+                    Authorization: $.cookie('Authorization')
                 },
                 success: function (data, textStatus, request) {
                     notification(true, "自动匹配成功")
@@ -291,13 +261,13 @@ function getDoubanDetail(item) {
                 tracks += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="pubdate" value="' + element.title + '" /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
             });
             $('#tracks').html(tracks)
-            $('#album-input-title').val(data.title);
-            $('#album-input-artists').val(artist);
-            $('#album-input-intro').val(data.intro);
-            $('#album-input-pubdate').val(data.pubdate);
-            $('#album-input-publisher').val(data.publisher);
-            $('#album-input-genres').val(data.genres);
-            $('#album-input-version').val(data.version);
+            $('.album-input-title').val(data.title);
+            $('.album-input-artists').val(artist);
+            $('.album-input-intro').val(data.intro);
+            $('.album-input-pubdate').val(data.pubdate);
+            $('.album-input-publisher').val(data.publisher);
+            $('.album-input-genres').val(data.genres);
+            $('.album-input-version').val(data.version);
             $.each(data.tags, function (i, element) {
                 $('.tag-list-container').prepend('<span class="tag">' + element.name + '</span>')
             });
@@ -319,7 +289,7 @@ $('#submit-button').click(function () {
            }
        ));*/
     var album = {};
-    album.artists = $('#album-input-artists').val().split('/').map(function (num) {
+    album.artists = $('.album-input-artists').val().split('/').map(function (num) {
             var artist = {};
             artist.name = num;
             return artist;
@@ -336,17 +306,17 @@ $('#submit-button').click(function () {
         tag.name = $(index).html();
         return tag;
     }));
-    album.title = $('#album-input-title').val();
-    album.intro = $('#album-input-intro').val();
-    album.pubdate = $('#album-input-pubdate').val();
-    album.publisher = $('#album-input-publisher').val();
-    album.genres = $('#album-input-genres').val();
-    album.version = $('#album-input-version').val();
+    album.title = $('.album-input-title').val();
+    album.intro = $('.album-input-intro').val();
+    album.pubdate = $('.album-input-pubdate').val();
+    album.publisher = $('.album-input-publisher').val();
+    album.genres = $('.album-input-genres').val();
+    album.version = $('.album-input-version').val();
     album.downloadRes={};
-    album.downloadRes.permission=$('#album-input-res-permission').val();
-    album.downloadRes.url=$('#album-input-res').val();
-    album.downloadRes.password=$('#album-input-res-password').val();
-    album.downloadRes.unzipKey=$('#album-input-res-zip').val();
+    album.downloadRes.permission = $('.album-input-res-permission').val();
+    album.downloadRes.url = $('.album-input-res').val();
+    album.downloadRes.password = $('.album-input-res-password').val();
+    album.downloadRes.unzipKey = $('.album-input-res-zip').val();
 if(album.downloadRes.permission=='')
     album.downloadRes.permission=0;
     console.log(album)
@@ -369,12 +339,10 @@ if(album.downloadRes.permission=='')
                 url: "http://127.0.0.1/albums/" + album.id + "/covers",
                 type: 'PUT',
                 data: formData,
-                // 告诉jQuery不要去处理发送的数据
                 processData: false,
-                // 告诉jQuery不要去设置Content-Type请求头
                 contentType: false,
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjNzEzOTY4ZTg2YzJjMDIyNGI1YWMxMCIsInN1YiI6IueUn-ianVFBUSIsImlhdCI6MTU1MTQ0NjEyNSwiZXhwIjoxNTUyMzEwMTI1fQ.qSX7HEjOXZbRMcoslal_Hv69XQn2WlhgY83vMYS7MGJpEDQIemU9vHWCqxoTQAl087WSLN8fWfrkHL9H0kLTuw'
+                    Authorization: $.cookie('Authorization')
                 },
                 beforeSend: function () {
                     console.log("正在进行，请稍候");
@@ -387,7 +355,7 @@ if(album.downloadRes.permission=='')
                     $('#suggest-album').hide();
                     $('#album_form').hide();
                     $('#album_form input').val('');
-                    $('#album-input-intro').html('');
+                    $('.album-input-intro').html('');
                 },
                 error: function (data) {
                     notification(false, "封面上传失败")
@@ -402,25 +370,4 @@ if(album.downloadRes.permission=='')
     });
 
 
-    /*      $.ajax({
-              type: "post",
-              url: "http://127.0.0.1/douban?title=" + $('#album-input-title').val(),
-              contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
-              headers: {
-                  Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjNzEzOTY4ZTg2YzJjMDIyNGI1YWMxMCIsInN1YiI6IueUn-ianVFBUSIsImlhdCI6MTU1MTQ0NjEyNSwiZXhwIjoxNTUyMzEwMTI1fQ.qSX7HEjOXZbRMcoslal_Hv69XQn2WlhgY83vMYS7MGJpEDQIemU9vHWCqxoTQAl087WSLN8fWfrkHL9H0kLTuw'
-              },
-              success: function (data, textStatus, request) {
-                  console.log(data)
-                  data = data.data;
-                  var html = '';
-                  $.each(data, function (index, element) {
-                      html += '<div class="suggest-item" ><img class="item-cover" id="' + element.douban_id
-                          + '" src="https://douban.otakuy.com/get/' + element.cover + '" onclick="getDoubanDetail(this)"/><div  class="item-title">' + element.title + '</div></div>';
-                  });
-                  $('#suggest-album').html(html)
-              },
-              error: function () {
-
-              }
-          });*/
 });

@@ -1,4 +1,4 @@
-var isLogin = false;
+
 
 $(".loginbox").hover(function () {
     $(".wave.-one").addClass("w1")
@@ -22,6 +22,9 @@ $('.loginbox').click(function (e) {
         } else{
             $('.loginbox').css('z-index', 1);
             container.attr("class","animated fadeOutDown container");
+            setTimeout(function () {
+                container.hide();
+            }, 600);
             $('.mask').hide();
         }
     }
@@ -37,6 +40,9 @@ $('#beerimg').click(function (e) {
         album_form.show();
     } else {
         album_form.attr("class","animated fadeOutDown");
+        setTimeout(function () {
+            album_form.hide();
+        }, 600);
         $('.mask').hide();
         $('.beerbox').css('z-index', 1);
     }}

@@ -1,17 +1,4 @@
-$(document).ready(function () {
-    if ($.cookie("Authorization") != null) {
-        var user = JSON.parse(window.localStorage.user);
-        $('#avatar').attr('src', user.avatar + '');
-        $('.loginbox').children().hide();
-        $('#avatar').show();
-        $('#username').html(user.username);
-        $('#starcount').html(user.star);
-        $('#intro').val(user.intro);
-        isLogin = true;
-        notification(true,"自动登录成功")
-    }
 
-});
 var inP = $('.input-field');
 
 inP.on('blur', function () {
@@ -85,8 +72,12 @@ $('#avatar').on('click', function (e) {
     } else {
         $('.loginbox').css('z-index', 1);
         profile_card.attr('class','profile-card animated fadeOutDown')
+        setTimeout(function () {
+            $('.profile-card').hide();
+            $('.mask').hide();
+        }, 600);
        // $('.profile-card').hide();
-        $('.mask').hide();
+
     }
 
 });
@@ -234,19 +225,3 @@ $('#goto_register_form').on('click', function () {
     });
 });
 
-
-$.fn.serializeObject = function () {
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function () {
-        if (o[this.name]) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};

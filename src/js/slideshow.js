@@ -74,48 +74,6 @@ function moveToSelected(element) {
 // Eventos teclado
 function albumclick(e) {
     if ($(e.parentNode.parentNode).hasClass('selected')) {
-        $.ajax({
-            type: "get",
-            url: "http://127.0.0.1/albums/" + $('.selected').attr('id'),
-            headers: {
-                Authorization: $.cookie('Authorization')
-            },
-            contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
-            success: function (data, textStatus, request) {
-
-                data = data.data;
-                var artist = data.artists.map(function (item) {
-                    return item.name;
-                }).join(' ');
-                console.log(data)
-                var html='';
-                $('.album-title').html('《'+data.title+'》');
-                $('.album-artist').html(artist);
-                $('.album-intro').html(data.intro);
-                $.each(data.tracks, function (index, element) {
-                    html +=(index+1)+'. '+element.title+'<br>';
-                });
-                $('.album-tracks').html(html);
-                $('.profile-image').css("background-image","url("+data.cover+")");
-                var tags='';
-                $.each(data.tags, function (index, element) {
-                    tags +=' <div class="tag">'+element.name+'</div>';
-                });
-               $('.album-detail').html('  <p>流派: '+data.genres+'<br>专辑类型: '+data.version+'<br>发行时间: '+data.pubdate+'<br>出版商: '+data.publisher+'</p>'+tags);
-
-               $('.album-res').html('下载链接: <a href="'+data.downloadRes.url+'" target="view_window">'+data.downloadRes.url+'</a><br/>链接密码: '+data.downloadRes.password+'<br/>解压密码: '+data.downloadRes.unzipKey)
-                $('.mask').show();
-                $('#album').attr('album-id',data.id)
-                $('#album').attr('owner',data.owner)
-                $('#album').show();
-
-            },
-            error: function () {
-                //请求出错处理
-                notification(false,"请先登录");
-            }
-
-        });
+        getAlbumDetail($('.selected').attr('id'))
     }
 }
-

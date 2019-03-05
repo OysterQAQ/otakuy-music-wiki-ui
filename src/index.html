@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ch">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/editAlbum.css">
     <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/comment.css">
+    <link rel="stylesheet" href="css/waterfall.css">
+    <link rel="stylesheet" href="css/revision.css">
 </head>
 <body>
 <div class='loginbox'>
@@ -52,7 +54,7 @@
     </button>
     <div class="search-option">
         <div>
-            <input name="type" type="radio" value="title" id="type-title" checked="true">
+            <input name="type" type="radio" value="byTitle" id="type-title" checked="true">
             <label for="type-title">
                 <svg class="edit" >
                     <use xlink:href="#icon-album"></use>
@@ -61,7 +63,7 @@
             </label>
         </div>
         <div>
-            <input name="type" type="radio" value="artist" id="type-artist">
+            <input name="type" type="radio" value="byArtist" id="type-artist">
             <label for="type-artist">
                 <svg class="edit-pen-title">
                     <use xlink:href="#icon-avatar"></use>
@@ -70,7 +72,7 @@
             </label>
         </div>
         <div>
-            <input name="type" type="radio" value="tag" id="type-tag">
+            <input name="type" type="radio" value="byTag" id="type-tag">
             <label for="type-tag">
                 <svg class="edit-pen-title">
                     <use xlink:href="#icon-tag"></use>
@@ -81,7 +83,6 @@
     </div>
 </form>
 <div id="waterfall">
-
 </div>
 <!--<div class="loader" id="loader">
     <img class="loaderimg" src="img/loading.svg">
@@ -267,13 +268,13 @@
             </svg>
             <div class="control-center"  id="star-button">
                 <ul class="right-sidebar">
-                    <li class="count">15</li>
-                    <li class="count">20</li>
+                    <li class="starcount">15</li>
+                    <li class="starcount">20</li>
                 </ul>
                 <div class="option-btn"></div>
                 <ul class="left-sidebar">
-                    <li class="count">5</li>
-                    <li class="count">10</li>
+                    <li class="starcount">5</li>
+                    <li class="starcount">10</li>
                 </ul>
             </div>
             <svg id="rivision-button">
@@ -300,10 +301,55 @@
         </form>
         <div class="triangle"></div>
     </div>
+
+    <div id="revision-container">
+        <div class="cont_heg_50"></div>
+        <div class="cont_select_center">
+            <div class="select_mate" data-mate-select="active">
+                <select name="" onchange="" onclick="return false;" id="">
+                    <option value="title">标题</option>
+                    <option value="intro">简介</option>
+                    <option value="artists">艺术家</option>
+                    <option value="downloadRes">下载资源</option>
+                    <option value="tags">标签</option>
+                    <option value="tracks">曲目</option>
+                    <option value="genres">流派</option>
+                    <option value="version">专辑类型</option>
+                    <option value="pubdate">发行时间</option>
+                    <option value="publisher">出版商</option>
+                </select>
+                <p class="selecionado_opcion" onclick="open_select(this)"></p><span onclick="open_select(this)"
+                                                                                    class="icon_select_mate">
+            <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+    <path d="M0-.75h24v24H0z" fill="none"/>
+</svg></span>
+                <div class="cont_list_select_mate">
+                    <ul class="cont_select_int"></ul>
+                </div>
+            </div>
+            <div class="revision-edit">
+                <form id="revision-edit_form" album-id="">
+                </form>
+            </div>
+        </div> <!-- End div center   -->
+        <div class="revision-queue">
+            <div class="revision">
+                "233333"
+            </div>
+            <div class="revision">
+                "233333"
+            </div>
+        </div>
+        <img id="revison-submit" src="img/plane.svg">
+        <div class="triangle2"></div>
+    </div>
+
 </div>
 <form id="album_form" album-id="">
     <div class="line-editable">
-        <input autocomplete="off" placeholder="专辑标题" type="text" class="Field_Input"  id="album-input-title" name="title" required />
+        <input autocomplete="off" placeholder="专辑标题" type="text" class="Field_Input album-input-title" name="title"
+               required/>
         <label>
             <div>标题</div>
         </label>
@@ -315,7 +361,8 @@
 
     </div>
     <div class="line-editable">
-        <input autocomplete="off" placeholder="艺术家(复数使用/分隔)" id="album-input-artists" type="text" class="Field_Input"  name="artist" required />
+        <input autocomplete="off" placeholder="艺术家(复数使用/分隔)" type="text" class="Field_Input album-input-artists"
+               name="artist" required/>
         <label>
             <div>艺术家</div>
         </label>
@@ -323,7 +370,7 @@
 
 
     <div class="line-editable">
-        <textarea autocomplete="off" placeholder="有限的介绍" id="album-input-intro"class="Field_Input"  name="intro"></textarea>
+        <textarea autocomplete="off" placeholder="有限的介绍" class="Field_Input album-input-intro" name="intro"></textarea>
         <label>
             <div>简介</div>
         </label>
@@ -338,25 +385,28 @@
         <input class="tag-list-input" type="text" placeholder="標簽の輸入" />
     </div>
     <div class="line-editable">
-        <input autocomplete="off" id="album-input-res" placeholder="仅供学习的下载链接" type="text" class="Field_Input"  name="res"  />
+        <input autocomplete="off" placeholder="仅供学习的下载链接" type="text" class="Field_Input album-input-res" name="res"/>
         <label>
             <div>资源链接</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" id="album-input-res-password" placeholder="资源链接密码(若存在)" type="text" class="Field_Input"  name="res-password"  />
+        <input autocomplete="off" placeholder="资源链接密码(若存在)" type="text" class="Field_Input album-input-res-password"
+               name="res-password"/>
         <label>
             <div>资源链接密码</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" id="album-input-res-zip" placeholder="资源压缩密码(若存在)" type="text" class="Field_Input"  name="res-zip"  />
+        <input autocomplete="off" placeholder="资源压缩密码(若存在)" type="text" class="Field_Input album-input-res-zip"
+               name="res-zip"/>
         <label>
             <div>资源压缩密码</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" id="album-input-res-permission" placeholder="设置star高于一定数目的用户才可以查看(不填写则为0)" type="text" class="Field_Input"  name="res-permission"  />
+        <input autocomplete="off" placeholder="设置star高于一定数目的用户才可以查看(不填写则为0)" type="text"
+               class="Field_Input album-input-res-permission" name="res-permission"/>
         <label>
             <div>查看权限</div>
         </label>
@@ -368,25 +418,29 @@
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" id="album-input-pubdate" placeholder="发行日期" type="text" class="Field_Input"  name="pubdate"  />
+        <input autocomplete="off" placeholder="发行日期" type="text" class="Field_Input album-input-pubdate"
+               name="pubdate"/>
         <label>
             <div>发行日期</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off"id="album-input-publisher" placeholder="发行商" type="text" class="Field_Input"  name="publisher"  />
+        <input autocomplete="off" placeholder="发行商" type="text" class="Field_Input album-input-publisher"
+               name="publisher"/>
         <label>
             <div>发行商</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off"id="album-input-genres" placeholder="专辑整体风格" type="text" class="Field_Input"  name="genres"  />
+        <input autocomplete="off" placeholder="专辑整体风格" type="text" class="Field_Input album-input-genres"
+               name="genres"/>
         <label>
             <div>风格</div>
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off"id="album-input-version" placeholder="(通常盘、限定盘.etc)" type="text" class="Field_Input"  name="version"  />
+        <input autocomplete="off" placeholder="(通常盘、限定盘.etc)" type="text" class="Field_Input album-input-version"
+               name="version"/>
         <label>
             <div>版本</div>
         </label>
@@ -409,15 +463,17 @@
 <script type="text/javascript" src="//at.alicdn.com/t/font_1048075_0v19j7sj9zb.js"></script>
 <script type="text/javascript" src="js/jq.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
 <script type="text/javascript" src="js/notification.js"></script>
 <script type="text/javascript" src="js/keypress.js"></script>
 <script type="text/javascript" src="js/slideshow.js"></script>
 <script type="text/javascript" src="js/icon_animation.js"></script>
-<script type="text/javascript" src="js/search.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
 <script type="text/javascript" src="js/profile-card.js"></script>
 <script type="text/javascript" src="js/album.js"></script>
 <script type="text/javascript" src="js/editAlbum.js"></script>
 <script type="text/javascript" src="js/comment.js"></script>
-
+<script type="text/javascript" src="js/waterfall.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+<script type="text/javascript" src="js/revision.js"></script>
 </html>

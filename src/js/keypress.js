@@ -3,7 +3,7 @@ $(document).keypress(function (e) {
         if ($("#track-sum").is(":focus")) {
             var html = '';
             for (var i = 0; i < $('#track-sum').val(); i++) {
-                html += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="pubdate"  /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
+                html += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="track"  /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
             }
             $('#tracks').html(html)
         }
@@ -54,6 +54,13 @@ $(document).keypress(function (e) {
                 }
             });
 
+        }
+        if ($('.search-input').is(":focus")) {
+            filter = $("input[type='radio']:checked").val();
+            param = $('.search-input').val();
+            page = 0;
+            row = 0;
+            getAlbumList(filter, param, page);
         }
 
     }

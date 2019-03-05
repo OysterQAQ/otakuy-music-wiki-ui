@@ -409,7 +409,8 @@ section .tag {
 .right-sidebar li:nth-child(2){
 
 }
-.count{
+
+.starcount {
     width: 40px;
     text-align: center;
     line-height: 40px;
@@ -417,7 +418,8 @@ section .tag {
     color: #FFFFFF;
 
 }
-.count:hover{
+
+.starcount:hover {
     background-color: #f60008;
 }
 
