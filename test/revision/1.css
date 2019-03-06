@@ -1,0 +1,184 @@
+
+#revision-container {
+    background-color: #e3e9ed;
+    border-radius: 5px;
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 600px;
+    height: 400px;
+}
+
+
+.cont_select_center {
+    position: absolute;
+    top: 20%;
+    margin-top: -15px;
+    left: 85px;
+
+}
+
+.cont_heg_50 {
+    border-radius: 4px 4px 0 0;
+    position: absolute;
+    height: 20%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #2e4e84;
+}
+
+/* ///  END DECORATION CSS  ///  */
+.icon_select_mate {
+    position: absolute;
+    top: 1px;
+    right: 2%;
+    font-size: 16px;
+
+    transition: all 275ms;
+}
+
+.select_mate {
+    width: 50px;
+    position: relative;
+    float: left;
+    min-width: 100px;
+    height: 30px;
+    min-height: 30px;
+    font-family: 'Roboto';
+    color: #777;
+    font-weight: 300;
+    background-color: #fff;
+    box-shadow: 1px 2px 10px -2px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    transition: all 375ms ease-in-out;
+    /* Oculto el elemento select */
+}
+
+.select_mate select {
+    position: absolute;
+    overflow: hidden;
+    height: 0px;
+    opacity: 0;
+    z-index: -1;
+}
+
+.cont_list_select_mate {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+.cont_select_int {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 999;
+    overflow: hidden;
+    height: 0px;
+    width: 100%;
+    background-color: #fff;
+    padding: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-radius: 0px 0px 3px 3px;
+    box-shadow: 1px 4px 10px -2px rgba(0, 0, 0, 0.2);
+    transition: all 375ms ease-in-out;
+}
+
+.cont_select_int li {
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    float: left;
+    width: 96%;
+    border-bottom: 1px solid #E0E0E0;
+    background-color: #F5F5F5;
+    list-style-type: none;
+    padding: 2px 2%;
+    margin: 0px;
+    transition: all 275ms ease-in-out;
+    display: block;
+    cursor: pointer;
+}
+
+.cont_select_int li:last-child {
+    border-radius: 3px;
+    border-bottom: 0px;
+}
+
+.cont_select_int li:hover {
+    background-color: #EEEEEE;
+}
+
+.cont_select_int .active {
+    background-color: #EEEEEE;
+}
+
+/* etiqueta <p> con la opcion selecionada  */
+.selecionado_opcion {
+    padding: 5px 2%;
+    width: 96%;
+    display: block;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.revision-edit {
+    border-radius: 4px;
+    position: absolute;
+    width: 300px;
+    height: 266px;
+    background-color: #FFF;
+    left: 190px;
+    top: -20px;
+}
+
+.triangle2 {
+    top: 400px;
+    left: 480px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 20px 0 20px;
+    border-color: #e3e9ed transparent transparent transparent;
+    position: absolute;
+}
+
+.revision-queue {
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: #ffffff;
+    left: 35px;
+    top: 110px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#revison-submit {
+    position: absolute;
+    top: 330px;
+    right: 150px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+}
+
+#revison-submit:hover {
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.25));
+}
+
+.revision-queue .revision {
+    width: 200px;
+    min-height: 50px;
+    text-align: left;
+
+    border-bottom: 1px solid #101f33;
+}

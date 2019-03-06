@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="1.css">
+    <link rel="stylesheet" href="editAlbum.css">
+</head>
+
+<body>
+<div id="revision-container">
+    <div class="cont_heg_50"></div>
+    <div class="cont_select_center">
+        <div class="select_mate" data-mate-select="active">
+            <select name="" onchange="" onclick="return false;" id="">
+                <option value="title">标题</option>
+                <option value="intro">简介</option>
+                <option value="artists">艺术家</option>
+                <option value="downloadRes">下载资源</option>
+                <option value="tags">标签</option>
+                <option value="tracks">曲目</option>
+                <option value="genres">流派</option>
+                <option value="version">专辑类型</option>
+                <option value="pubdate">发行时间</option>
+                <option value="publisher">出版商</option>
+            </select>
+            <p class="selecionado_opcion" onclick="open_select(this)"></p><span onclick="open_select(this)"
+                                                                                class="icon_select_mate">
+            <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+    <path d="M0-.75h24v24H0z" fill="none"/>
+</svg></span>
+            <div class="cont_list_select_mate">
+                <ul class="cont_select_int"></ul>
+            </div>
+        </div>
+        <div class="revision-edit">
+            <form id="revision-edit_form" album-id="">
+            </form>
+        </div>
+    </div> <!-- End div center   -->
+    <div class="revision-queue">
+        <div class="revision">
+            "233333"
+        </div>
+        <div class="revision">
+            "233333"
+        </div>
+    </div>
+    <img id="revison-submit" src="plane.svg">
+    <div class="triangle2"></div>
+</div>
+
+<form id="album_form" album-id="5c713c9723278b0ef02adb6e" style="display: none">
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="专辑标题" type="text" class="Field_Input album-input-title" name="title"
+               required/>
+        <label>
+            <div>标题</div>
+        </label>
+    </div>
+    <svg id="get-album-suggestion">
+        <use xlink:href="#icon-xunhuan"></use>
+    </svg>
+    <div id="suggest-album">
+
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="艺术家(复数使用/分隔)" type="text" class="Field_Input album-input-artists"
+               name="artist" required/>
+        <label>
+            <div>艺术家</div>
+        </label>
+    </div>
+
+
+    <div class="line-editable">
+        <textarea autocomplete="off" placeholder="有限的介绍" class="Field_Input album-input-intro" name="intro"></textarea>
+        <label>
+            <div>简介</div>
+        </label>
+    </div>
+    <div class="tracks-input">
+        <input autocomplete="off" id="track-sum" placeholder="" type="text"/>
+        <div class="tip">输入歌曲数量后回车生成表单</div>
+        <div id="tracks">
+        </div>
+    </div>
+    <div class="tag-list-container">
+        <input class="tag-list-input" type="text" placeholder="標簽の輸入"/>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="仅供学习的下载链接" type="text" class="Field_Input album-input-res" name="res"/>
+        <label>
+            <div>资源链接</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="资源链接密码(若存在)" type="text" class="Field_Input album-input-res-password"
+               name="res-password"/>
+        <label>
+            <div>资源链接密码</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="资源压缩密码(若存在)" type="text" class="Field_Input album-input-res-zip"
+               name="res-zip"/>
+        <label>
+            <div>资源压缩密码</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="设置star高于一定数目的用户才可以查看(不填写则为0)" type="text"
+               class="Field_Input album-input-res-permission" name="res-permission"/>
+        <label>
+            <div>查看权限</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="专辑封面" type="file" id="cover-upload" class="Field_Input"/>
+        <label>
+            <div>专辑封面</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="发行日期" type="text" class="Field_Input album-input-pubdate"
+               name="pubdate"/>
+        <label>
+            <div>发行日期</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="发行商" type="text" class="Field_Input album-input-publisher"
+               name="publisher"/>
+        <label>
+            <div>发行商</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="专辑整体风格" type="text" class="Field_Input album-input-genres"
+               name="genres"/>
+        <label>
+            <div>风格</div>
+        </label>
+    </div>
+    <div class="line-editable">
+        <input autocomplete="off" placeholder="(通常盘、限定盘.etc)" type="text" class="Field_Input album-input-version"
+               name="version"/>
+        <label>
+            <div>版本</div>
+        </label>
+    </div>
+    <div class='submit-button-container'>
+        <img id="submit-button" src="img/plane.svg">
+    </div>
+</form>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="../../src/js/jquery.cookie.js"></script>
+<script src="1.js"></script>
+</html>

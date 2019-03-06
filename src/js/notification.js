@@ -19,3 +19,25 @@ function notification(status,message){
         notification.hide()
     }, 3500);
 };
+
+var getNotificationCount = function () {
+    $.ajax({
+        type: "GET",
+        headers: {
+            Authorization: $.cookie('Authorization')
+        },
+        url: "http://127.0.0.1/notifications/noRead",
+        contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
+        success: function (data, textStatus, request) {
+            console.log(data)
+            $('.notification--num').html(data.data)
+            setTimeout(function () {
+                notification(true, "共有" + data.data + "条未读消息");
+            }, 600);
+            //   notification(true, "共有"+data.data.length+"条未读消息");
+        },
+        error: function (data, textStatus, request) {
+            notification(false, "获取消息错误");
+        }
+    });
+}

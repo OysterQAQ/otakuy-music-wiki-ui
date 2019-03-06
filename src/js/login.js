@@ -113,6 +113,7 @@ $('#login_btn').on('click', function (e) {
             }, 500);
             $('.mask').hide();
             $('.beerbox').css('z-index', 1);
+            getNotificationCount();
 
         },
         error: function () {

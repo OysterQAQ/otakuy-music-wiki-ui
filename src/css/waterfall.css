@@ -1,0 +1,107 @@
+
+#waterfall {
+    width: 948px;
+    min-height: 200px;
+    background-color: transparent;
+    margin: 0 auto;
+    top: 0px;
+    left: 0px;
+    position: relative;
+    overflow-y: visible;
+    display: block;
+}
+
+.waterfall-box {
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    margin: 0;
+    overflow: hidden;
+    width: 228px;
+    height: 228px;
+    background-image: url("https://ws4.sinaimg.cn/large/006346uDgy1g0lab4722mj315o15o4b3.jpg");
+    background-size: 250px auto;
+}
+
+.box-header-container {
+    position: relative;
+    border-radius: 4px;
+    height: 228px;
+}
+
+.box-header-image {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: auto;
+    backface-visibility: hidden;
+}
+
+
+.box-header {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    padding: 15px;
+    height: 200px;
+}
+
+
+.box-main-heading {
+    text-align: left;
+    max-height: 180px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 300;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+.box-overlay-header {
+    background-color: #FFF;
+    height: 80px;
+    margin: -50px 0 0 -5%;
+    transform: rotate(-8deg);
+    width: 110%;
+    z-index: 0;
+}
+
+.box-body {
+    background-color: #eee;
+    color: #555;
+    margin-top: -30px;
+    padding: 0 15px 0;
+    position: relative;
+}
+
+.box-body-stats {
+    display: inline-block;
+    font-size: 16px;
+    width: 100px;
+    font-weight: 700;
+    float: left;
+    margin: -35px 0 0 0;
+    left: 40px;
+    position: relative;
+    text-transform: uppercase;
+
+}
+
+.box-body-stats > span {
+    display: inline-block;
+    font-weight: 900;
+    margin-top: 8px;
+}
+
+.box-body-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    float: left;
+    margin: -90px 0 20px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}

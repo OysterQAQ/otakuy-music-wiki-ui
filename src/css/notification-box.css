@@ -1,0 +1,98 @@
+
+.notification-box {
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    position: fixed;
+    z-index: 1;
+}
+
+.notification-box .notification-bell {
+    position: relative;
+    width: 100px;
+    height: 50px;
+}
+
+.notification-box .notification-bell svg {
+    top: 5px;
+    width: 100px;
+    height: 100px;
+}
+
+.notification-box .notification-bell svg > path {
+    cursor: pointer;
+    fill: #FFFFFF;
+}
+
+.notification-box .notification--bell {
+    animation: bell 2.2s linear infinite;
+    transform-origin: 30% 0%;
+}
+
+.notification-box .notification--bellClapper {
+    animation: bellClapper 2.2s 0.1s linear infinite;
+}
+
+.notification-box .notification--num {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    font-size: 27px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 23px;
+    background-color: #FF4C13;
+    border: 4px solid #FF4C13;
+    color: #FFFFFF;
+    text-align: center;
+    animation: notification 2.2s linear;
+}
+
+@keyframes bell {
+    0%, 25%, 75%, 100% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(10deg);
+    }
+    45% {
+        transform: rotate(-10deg);
+    }
+    55% {
+        transform: rotate(8deg);
+    }
+    60% {
+        transform: rotate(-8deg);
+    }
+}
+
+@keyframes bellClapper {
+    0%, 25%, 75%, 100% {
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(-0.15em);
+    }
+    45% {
+        transform: translateX(0.15em);
+    }
+    55% {
+        transform: translateX(-0.1em);
+    }
+    60% {
+        transform: translateX(0.1em);
+    }
+}
+
+@keyframes notification {
+    0%, 25%, 75%, 100% {
+        opacity: 1;
+    }
+    30%, 70% {
+        opacity: 0;
+    }
+}
