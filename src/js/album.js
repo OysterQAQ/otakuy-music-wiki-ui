@@ -4,13 +4,13 @@ $('.album-icon.close').click(function () {
     var commentbox = $('#commentbox');
     var revisionbox = $('#revision-container');
     var album = $('#album');
-    album.attr('class', 'album animated fadeOutDown');
+    album.attr('class', 'album-container animated fadeOutDown');
 
     setTimeout(function () {
         album.hide();
         commentbox.hide();
         revisionbox.hide();
-        album.attr('class', 'album');
+        album.attr('class', 'album-container');
         $('.mask').hide();
     }, 400);
 });
@@ -29,7 +29,7 @@ $('.starcount').on('click', function () {
         headers: {
             Authorization: $.cookie('Authorization')
         },
-        url: "http://127.0.0.1/albums/" + album.attr('album-id') + "/star",
+        url: otakuyApi + "/albums/" + album.attr('album-id') + "/star",
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         datatype: "application/json",
         data: JSON.stringify(star),

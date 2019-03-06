@@ -68,7 +68,7 @@ $('#login_btn').on('click', function (e) {
     console.log($("#login_form").serializeObject());
     $.ajax({
         type: "post",
-        url: "http://127.0.0.1/login",
+        url: otakuyApi + "/login",
         processData: false,
         datatype: "application/json",
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
@@ -100,7 +100,7 @@ $('#register_btn').on('click', function (e) {
     console.log($("#register_form").serializeObject());
     $.ajax({
         type: "post",
-        url: "http://127.0.0.1/register",
+        url: otakuyApi + "/register",
         headers: {
             verificationCodeId: $("#verification_code").attr("verification_id"),
             verificationCode: $("#verification_code").val(),
@@ -132,7 +132,7 @@ $('#reset_btn').on('click', function (e) {
     console.log($("#reset_form").serializeObject());
     $.ajax({
         type: "get",
-        url: "http://127.0.0.1/forgetPassword?email="+$('#reset_email').val(),
+        url: otakuyApi + "/forgetPassword?email=" + $('#reset_email').val(),
         datatype: "application/json",
         contentType: 'application/json',
         success: function (data, textStatus, request) {
@@ -158,7 +158,7 @@ $('#verification_img').on('click', function () {
     if (!$('.formBox').hasClass('level-reg')){
     $.ajax({
         type: "get",
-        url: "http://127.0.0.1/verificationCode",
+        url: otakuyApi + "/verificationCode",
         datatype: "application/json",
         success: function (data) {
          //   console.log( data.data.id);
@@ -173,7 +173,7 @@ $('#verification_img').on('click', function () {
 $('#goto_register_form').on('click', function () {
     $.ajax({
         type: "get",
-        url: "http://127.0.0.1/verificationCode",
+        url: otakuyApi + "/verificationCode",
         datatype: "application/json",
         success: function (data) {
             //   console.log( data.data.id);

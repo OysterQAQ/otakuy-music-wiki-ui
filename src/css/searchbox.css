@@ -5,19 +5,6 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    background: #DEDEDE;
-    color: #5a6674;
-    font-size: 13px;
-    font-family: 'Arial';
-    overflow-x: hidden;
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: -25% 50%;
-    background-attachment: fixed;
-    background-image: url(../img/bg.svg);
-}
 
 .search-form {
     position: relative;

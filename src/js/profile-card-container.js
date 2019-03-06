@@ -8,18 +8,19 @@ $("#imageUpload").change(function() {
     readURL(this);
 });
 $('#sign-out').click(function () {
-    $('.loginbox').children().show();
+    $('.login-box').children().show();
     $('#avatar').hide();
     $('#avatar').attr("src", '');
     $.cookie('Authorization', '', { expires: -1 });
     localStorage.clear();
-    $('.profile-card').attr('class','profile-card animated fadeOutDown')
-    $('.profile-card').hide();
+    $('.profile-card-container').attr('class', 'profile-card-container animated fadeOutDown')
+    $('.profile-card-container').hide();
     $('.mask').hide();
     $('.login_info').get(0).innerHTML = "GO";
     $('.input-field.password').val('');
-
-    isLogin=false
+    $('#false').empty()
+    $('#true').empty()
+    isLogin = false;
     notification(true,"已安全登出")
 
 });

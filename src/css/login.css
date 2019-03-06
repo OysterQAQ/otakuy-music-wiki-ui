@@ -6,7 +6,7 @@ button:active {
     outline: none;
 }
 
-.container {
+.login-box-container {
     z-index: 2;
     left: 0px;
     top: 50px;
@@ -19,7 +19,8 @@ button:active {
     text-align: center;
 
 }
-.container:before {
+
+.login-box-container:before {
     content: '';
     height: 100%;
     width: 0px;

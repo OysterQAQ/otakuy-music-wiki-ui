@@ -3,12 +3,13 @@ var page = 0,
     flag = false,
     filter = '',
     param = '',
-    isLogin = false;
+    isLogin = false,
+    otakuyApi = 'http://api.otakuy.com';
 $(document).ready(function () {
     if ($.cookie("Authorization") != null) {
         var user = JSON.parse(window.localStorage.user);
         $('#avatar').attr('src', user.avatar + '');
-        $('.loginbox').children().hide();
+        $('.login-box').children().hide();
         $('#avatar').show();
         $('#username').html(user.username);
         $('#starcount').html(user.star);
@@ -42,15 +43,41 @@ function readURL(input) {
             $('.user-pic').css('background-image', 'url(' + e.target.result + ')');
             $('.user-pic').hide();
             $('.user-pic').fadeIn(650);
+
         }
+        var formData = new FormData();
+        formData.append("file", input.files[0]);
+        $.ajax({
+            type: "POST",
+            url: otakuyApi + "/users/" + JSON.parse(window.localStorage.user).id + "/avatars",
+            headers: {
+                Authorization: $.cookie('Authorization')
+            },
+            processData: false, // 使数据不做处理
+            contentType: false, // 不要设置Content-Type请求头
+            dataType: 'json',
+            data: formData,
+            success: function () {
+                notification(true, '上传头像成功')
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                notification(false, XMLHttpRequest.responseJSON.message)
+
+            }
+        });
         reader.readAsDataURL(input.files[0]);
+        console.log(input.files[0].size)
     }
+}
+
+function uploadAvater() {
+
 }
 
 function getAlbumDetail(albumId) {
     $.ajax({
         type: "get",
-        url: "http://127.0.0.1/albums/" + albumId,
+        url: otakuyApi + "/albums/" + albumId,
         headers: {
             Authorization: $.cookie('Authorization')
         },

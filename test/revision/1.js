@@ -161,7 +161,7 @@ $('#revison-submit').on('click', function () {
 
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1/albums/" + $('#album_form').attr('album-id') + "/revisions",
+        url: otakuyApi + "/albums/" + $('#album_form').attr('album-id') + "/revisions",
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         headers: {
             Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjN2U1Y2FlZTg2YzJjMzNkMGZjOTljMiIsInN1YiI6ImFhYSIsImlhdCI6MTU1MTc4NTE2NywiZXhwIjoxNTUyNjQ5MTY3fQ.3Lcr271-Ge1Ft2CzdcVLuTmHcyyfNIq7oF-HS4_smXJFnVSg_a6Cu3c9MPgfjTGkEjaUgJeYpk3Wg48T6z-ywA'
@@ -181,7 +181,7 @@ $('#revison-submit').on('click', function () {
 var getRevisionList = function (modificationPoint) {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1/albums/" + $('#album_form').attr('album-id') + "/revisions?modificationPoint=" + modificationPoint,
+        url: otakuyApi + "/albums/" + $('#album_form').attr('album-id') + "/revisions?modificationPoint=" + modificationPoint,
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         headers: {
             Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjN2U1Y2FlZTg2YzJjMzNkMGZjOTljMiIsInN1YiI6ImFhYSIsImlhdCI6MTU1MTc4NTE2NywiZXhwIjoxNTUyNjQ5MTY3fQ.3Lcr271-Ge1Ft2CzdcVLuTmHcyyfNIq7oF-HS4_smXJFnVSg_a6Cu3c9MPgfjTGkEjaUgJeYpk3Wg48T6z-ywA'

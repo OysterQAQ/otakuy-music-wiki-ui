@@ -215,7 +215,7 @@ $('#get-album-suggestion').click(function () {
             $('#suggest-album').css('display', '-webkit-box');
             $.ajax({
                 type: "get",
-                url: "http://127.0.0.1/douban?title=" + $('.album-input-title').val(),
+                url: otakuyApi + "/douban?title=" + $('.album-input-title').val(),
                 contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
                 headers: {
                     Authorization: $.cookie('Authorization')
@@ -244,7 +244,7 @@ $('#get-album-suggestion').click(function () {
 function getDoubanDetail(item) {
     $.ajax({
         type: "get",
-        url: "http://127.0.0.1/douban/" + $(item).attr('id'),
+        url: otakuyApi + "/douban/" + $(item).attr('id'),
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         headers: {
             Authorization: $.cookie('Authorization')
@@ -326,7 +326,7 @@ if(album.downloadRes.permission=='')
 
     $.ajax({
         type: "post",
-        url: "http://127.0.0.1/albums",
+        url: otakuyApi + "/albums",
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         headers: {
             Authorization: $.cookie('Authorization')
@@ -336,7 +336,7 @@ if(album.downloadRes.permission=='')
         success: function (data, textStatus, request) {
             album.id = data.data.id;
             $.ajax({
-                url: "http://127.0.0.1/albums/" + album.id + "/covers",
+                url: otakuyApi + "/albums/" + album.id + "/covers",
                 type: 'PUT',
                 data: formData,
                 processData: false,
@@ -349,7 +349,7 @@ if(album.downloadRes.permission=='')
                 },
                 success: function (data) {
                     notification(true, "专辑发布成功,等待管理员审核")
-                    $('.beerbox').css('z-index', 1);
+                    $('.beer-box').css('z-index', 1);
                     $('.mask').hide();
                     $('#suggest-album').html('');
                     $('#suggest-album').hide();

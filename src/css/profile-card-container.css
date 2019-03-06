@@ -11,7 +11,7 @@
     vertical-align: middle;
 }
 
-.profile-card {
+.profile-card-container {
     display: none;
     position: fixed;
     top: 30%;
@@ -31,7 +31,7 @@
     color: #fff;
 }
 
-.profile-card:before {
+.profile-card-container:before {
     position: absolute;
     content: "";
     top: 0;
@@ -43,11 +43,11 @@
     border-radius: 7px;
 }
 
-.profile-card .card-body {
+.profile-card-container .card-body {
     margin-bottom: 10px;
 }
 
-.profile-card .card-body .user-info .user-pic {
+.profile-card-container .card-body .user-info .user-pic {
     position: relative;
     top: -10px;
     width: 90px;
@@ -62,7 +62,7 @@
     z-index: 1;
 }
 
-.profile-card .card-body .user-info .user-pic .edit {
+.profile-card-container .card-body .user-info .user-pic .edit {
     position: absolute;
     content: "";
     bottom: 0;
@@ -77,25 +77,25 @@
     cursor: pointer;
 }
 
-.profile-card .card-body .user-info .user-pic .edit i {
+.profile-card-container .card-body .user-info .user-pic .edit i {
     font-size: 14px;
     vertical-align: middle;
 }
 
-.profile-card .card-body .user-info .user-name {
+.profile-card-container .card-body .user-info .user-name {
     margin: 5px 0 0 0;
     font-weight: 400;
     font-size: 1.3em;
 }
 
-.profile-card .card-body .user-info p {
+.profile-card-container .card-body .user-info p {
     margin: 5px 0 0 0;
     font-size: 14px;
     opacity: 0.7;
     font-weight: 400;
 }
 
-.profile-card .card-footer .list {
+.profile-card-container .card-footer .list {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -103,25 +103,25 @@
     vertical-align: middle;
 }
 
-.profile-card .card-footer .list li {
+.profile-card-container .card-footer .list li {
     float: left;
 }
 
-.profile-card .card-footer .list li + li {
+.profile-card-container .card-footer .list li + li {
     margin-left: 60px;
 }
 
-.profile-card .card-footer .list li span {
+.profile-card-container .card-footer .list li span {
     display: block;
 }
 
-.profile-card .card-footer .list li span + span {
+.profile-card-container .card-footer .list li span + span {
     font-size: 14px;
     font-weight: 400;
     opacity: 0.7;
 }
 
-.profile-card .card-footer .list li .count {
+.profile-card-container .card-footer .list li .count {
     font-weight: 400;
     font-size: 1.3em;
     padding-bottom: 0px;
@@ -129,7 +129,7 @@
 
 /* Responsive */
 @media (max-width: 767px) {
-    .profile-card {
+    .profile-card-container {
         width: 310px;
         height: 250px;
         margin: -140px 0 0 -170px;

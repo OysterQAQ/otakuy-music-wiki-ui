@@ -79,7 +79,7 @@ var getNotificationList = function (isRead) {
         headers: {
             Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjNzEzOTY4ZTg2YzJjMDIyNGI1YWMxMCIsInN1YiI6IueUn-ianVFBUSIsImlhdCI6MTU1MTg1ODAwNCwiZXhwIjoxNTUyNzIyMDA0fQ.Zc04ydPaibAtsVixasa1-rP02iRpVRjfngZ3WDtaSQUltyqUbRdx2BDckLAAHVULnpQsuWdjT2dtrsjqemDeow'
         },
-        url: "http://127.0.0.1/notifications?isRead=" + isRead,
+        url: otakuyApi + "/notifications?isRead=" + isRead,
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         success: function (data, textStatus, request) {
             console.log(data)

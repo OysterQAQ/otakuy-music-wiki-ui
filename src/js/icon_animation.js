@@ -1,6 +1,4 @@
-
-
-$(".loginbox").hover(function () {
+$(".login-box").hover(function () {
     $(".wave.-one").addClass("w1")
     $(".wave.-two").addClass("w2")
     $(".wave.-three").addClass("w3")
@@ -10,18 +8,18 @@ $(".loginbox").hover(function () {
     $(".wave.-three").removeClass("w3")
 });
 
-$('.loginbox').click(function (e) {
+$('.login-box').click(function (e) {
     e.preventDefault();
-    var container =$('.container')
+    var container = $('.login-box-container')
     if (!isLogin) {
         if (container.css('display') == 'none'||container.hasClass('fadeOutDown')) {
-            $('.loginbox').css('z-index', 3);
+            $('.login-box').css('z-index', 3);
             $('.mask').show();
-            container.attr("class","animated fadeInUp container");
+            container.attr("class", "animated fadeInUp login-box-container");
             container.show();
         } else{
-            $('.loginbox').css('z-index', 1);
-            container.attr("class","animated fadeOutDown container");
+            $('.login-box').css('z-index', 1);
+            container.attr("class", "animated fadeOutDown login-box-container");
             setTimeout(function () {
                 container.hide();
             }, 600);
@@ -34,7 +32,7 @@ $('#beerimg').click(function (e) {
     e.preventDefault();
     if (isLogin) {
     if (album_form.css('display') === 'none'||album_form.hasClass('fadeOutDown')) {
-        $('.beerbox').css('z-index', 2);
+        $('.beer-box').css('z-index', 2);
         $('.mask').show();
         album_form.attr("class","animated fadeInUp");
         album_form.show();
@@ -44,12 +42,12 @@ $('#beerimg').click(function (e) {
             album_form.hide();
         }, 600);
         $('.mask').hide();
-        $('.beerbox').css('z-index', 1);
+        $('.beer-box').css('z-index', 1);
     }}
     else notification(false,"请先登录")
 });
 
-$("#helpbox").hover(function () {
+$("#help-box").hover(function () {
     var inner=$(".inner")
     inner.addClass("animate");
     inner.append("<style>.inner:after{-webkit-animation: particle_ 2s infinite linear;\n" +
@@ -58,8 +56,31 @@ $("#helpbox").hover(function () {
     $(".inner").removeClass("animate");
     $("style").remove();
 });
-$(".beerbox").hover(function () {
+$(".beer-box").hover(function () {
     $("#beerimg").attr('src', "img/beer.svg");
 }, function () {
     $("#beerimg").attr('src', "img/beer1.svg");
 });
+
+$('.notification--bell').click(function (e) {
+    var notification_container = $('.notification-container')
+    e.preventDefault();
+    if (isLogin) {
+        if (notification_container.css('display') === 'none') {
+            getNotificationList($('.active a').attr('href').substring(1));
+            notification_container.attr("class", " notification-container animated bounceIn");
+            notification_container.show();
+        } else {
+            notification_container.attr("class", "notification-container animated bounceOut");
+            setTimeout(function () {
+                notification_container.hide();
+                $('.notification--num').html('0');
+                $('#false').empty()
+                $('#true').empty()
+            }, 600);
+
+        }
+    } else notification(false, "请先登录")
+});
+
+

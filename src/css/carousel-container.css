@@ -1,12 +1,13 @@
 
-#carousel {
+#carousel-container {
     max-width: 100%;
     position: relative;
     height: 500px;
     top: 200px;
     transform: translateY(-50%);
 }
-#carousel .bg{
+
+#carousel-container .bg {
     top: 10%;
     margin: 0 auto;
     width: 100%;
@@ -23,7 +24,8 @@
     min-height: 430px;
     height: auto;
 }
-#carousel > div {
+
+#carousel-container > div {
 
     top:55px;
     position: absolute;
@@ -31,65 +33,79 @@
     transition: transform 1s, left 1s, opacity 1s, z-index 0s;
     opacity: 1;
 }
-#carousel div img {
+
+#carousel-container div img {
     border-radius:10px;
     width: 400px;
     box-shadow: 0 7px 9px rgba(0, 0, 0, 0.35);
     transition: width 1s;
 }
-#carousel div.hideLeft {
+
+#carousel-container div.hideLeft {
     left: 0%;
     opacity: 0;
     transform: translateY(50%) translateX(-50%);
 }
-#carousel div.hideLeft img {
+
+#carousel-container div.hideLeft img {
     width: 200px;
 }
-#carousel div.hideRight {
+
+#carousel-container div.hideRight {
     left: 100%;
     opacity: 0;
     transform: translateY(50%) translateX(-50%);
 }
-#carousel div.hideRight img {
+
+#carousel-container div.hideRight img {
     width: 200px;
 }
-#carousel div.prev {
+
+#carousel-container div.prev {
     z-index: 5;
     left: 30%;
     transform: translateY(50px) translateX(-50%);
 }
-#carousel div.prev img {
+
+#carousel-container div.prev img {
     width: 300px;
 }
-#carousel div.prevLeftSecond {
+
+#carousel-container div.prevLeftSecond {
     z-index: 4;
     left: 15%;
     transform: translateY(50%) translateX(-50%);
     opacity: 0.7;
 }
-#carousel div.prevLeftSecond img {
+
+#carousel-container div.prevLeftSecond img {
     width: 200px;
 }
-#carousel div.selected {
+
+#carousel-container div.selected {
     z-index: 10;
     left: 50%;
     transform: translateY(0px) translateX(-50%);
 }
-#carousel div.next {
+
+#carousel-container div.next {
     z-index: 5;
     left: 70%;
     transform: translateY(50px) translateX(-50%);
 }
-#carousel div.next img {
+
+#carousel-container div.next img {
     width: 300px;
 }
-#carousel div.nextRightSecond {
+
+#carousel-container div.nextRightSecond {
     z-index: 4;
     left: 85%;
     transform: translateY(50%) translateX(-50%);
     opacity: 0.7;
 }
-#carousel div.nextRightSecond img {
+
+#carousel-container div.nextRightSecond img {
     width: 200px;
 }
 

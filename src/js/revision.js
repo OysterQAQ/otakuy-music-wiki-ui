@@ -143,7 +143,7 @@ var selectModificationPoint = function (modificationPoint) {
 
 $('#revison-submit').on('click', function () {
     var revision = {};
-    revision.album = $('.album').attr('album-id');
+    revision.album = $('#album').attr('album-id');
     var modificationPointElement = modificationPoint[$(".cont_select_int > .active").attr('data-index')];
     revision.modificationPoint = modificationPointElement;
     switch (modificationPointElement) {
@@ -161,10 +161,10 @@ $('#revison-submit').on('click', function () {
 
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1/albums/" + $('.album').attr('album-id') + "/revisions",
+        url: otakuyApi + "/albums/" + $('#album').attr('album-id') + "/revisions",
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjNzEzOTY4ZTg2YzJjMDIyNGI1YWMxMCIsInN1YiI6IueUn-ianVFBUSIsImlhdCI6MTU1MTQ0NjEyNSwiZXhwIjoxNTUyMzEwMTI1fQ.qSX7HEjOXZbRMcoslal_Hv69XQn2WlhgY83vMYS7MGJpEDQIemU9vHWCqxoTQAl087WSLN8fWfrkHL9H0kLTuw'
+            Authorization: $.cookie('Authorization')
         },
         data: JSON.stringify(revision),
         success: function (data, textStatus, request) {
@@ -182,10 +182,10 @@ $('#revison-submit').on('click', function () {
 var getRevisionList = function (modificationPoint) {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1/albums/" + $('#album_form').attr('album-id') + "/revisions?modificationPoint=" + modificationPoint,
+        url: otakuyApi + "/albums/" + $('#album_form').attr('album-id') + "/revisions?modificationPoint=" + modificationPoint,
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJpZCI6IjVjNzEzOTY4ZTg2YzJjMDIyNGI1YWMxMCIsInN1YiI6IueUn-ianVFBUSIsImlhdCI6MTU1MTQ0NjEyNSwiZXhwIjoxNTUyMzEwMTI1fQ.qSX7HEjOXZbRMcoslal_Hv69XQn2WlhgY83vMYS7MGJpEDQIemU9vHWCqxoTQAl087WSLN8fWfrkHL9H0kLTuw'
+            Authorization: $.cookie('Authorization')
         },
         success: function (data, textStatus, request) {
             var list = data.data;

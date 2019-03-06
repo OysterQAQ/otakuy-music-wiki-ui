@@ -1,6 +1,6 @@
 $.ajax({
     type: "get",
-    url: "http://127.0.0.1/albums/recommendAlbum",
+    url: otakuyApi + "/albums/recommendAlbum",
     contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
     success: function (data, textStatus, request) {
         data = data.data;
@@ -19,9 +19,9 @@ $.ajax({
         html += '    <div class="bg">\n' +
             '        <img id="bg" src="' + data[select].cover + '"/>\n' +
             '    </div>'
-        $('#carousel').html(html);
+        $('#carousel-container').html(html);
 
-        $('#carousel .slide').click(function () {
+        $('#carousel-container .slide').click(function () {
             moveToSelected($(this));
             $('#bg').attr('src', $('.selected').find('img')[0].src);
         });

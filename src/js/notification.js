@@ -26,7 +26,7 @@ var getNotificationCount = function () {
         headers: {
             Authorization: $.cookie('Authorization')
         },
-        url: "http://127.0.0.1/notifications/noRead",
+        url: otakuyApi + "/notifications/noRead",
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         success: function (data, textStatus, request) {
             console.log(data)

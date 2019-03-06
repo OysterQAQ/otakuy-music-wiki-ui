@@ -35,27 +35,30 @@ $('.regTag').click(function (e) {
     }
 });
 $('#avatar').on('click', function (e) {
-    var profile_card=$('.profile-card')
+    var profile_card = $('.profile-card-container')
     if (profile_card.css('display') == 'none'||profile_card.hasClass('fadeOutDown')) {
         $.ajax({
             type: "get",
-            url: "http://127.0.0.1/uers/" + JSON.parse(window.localStorage.user).id + "/albums/active?page=0",
+            url: otakuyApi + "/uers/" + JSON.parse(window.localStorage.user).id + "/albums/active?page=0",
             headers: {
                 Authorization: $.cookie('Authorization')
             },
             contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
             success: function (data, textStatus, request) {
                 albums = data.data;
-                var html = '';
-                $.each(albums, function (index, element) {
-                    var artist = element.artists.map(function (item) {
-                        return item.name;
-                    }).join(' ');
-                    html += ('<div class="albuminfo" album_id="' + element.id) + '"><img class="cover" src="' + element.cover + '"><div class="title">' + element.title + '</div><div class="artist">' + artist + '</div><svg  class="edit_btn" id="' + element.id + '"><use xlink:href="#icon-edit2-copy"></use></svg></div>'
+                if (albums != null) {
+                    var html = '';
+                    $.each(albums, function (index, element) {
+                        var artist = element.artists.map(function (item) {
+                            return item.name;
+                        }).join(' ');
+                        html += ('<div class="albuminfo" album_id="' + element.id) + '"><img class="cover" src="' + element.cover + '"><div class="title">' + element.title + '</div><div class="artist">' + artist + '</div><svg  class="edit_btn" id="' + element.id + '"><use xlink:href="#icon-edit2-copy"></use></svg></div>'
 
-                });
-                $('#albumlist').html(html);
-                $('#albumcount').html(albums.length);
+                    });
+
+                    $('#albumlist').html(html);
+                    $('#albumcount').html(albums.length);
+                } else $('#albumcount').html(0);
                 $('#starcount').html(JSON.parse(window.localStorage.user).star);
                 $('.user-pic').css("background-image","url("+JSON.parse(window.localStorage.user).avatar+")");
 
@@ -64,19 +67,19 @@ $('#avatar').on('click', function (e) {
                 notification(false,"获取用户专辑数据失败")
             }
         });
-        $('.loginbox').css('z-index', 2);
+        $('.login-box').css('z-index', 2);
         $('.mask').show();
         profile_card.show();
-        profile_card.attr('class','profile-card animated fadeInUp')
+        profile_card.attr('class', 'profile-card-container animated fadeInUp')
 
     } else {
-        $('.loginbox').css('z-index', 1);
-        profile_card.attr('class','profile-card animated fadeOutDown')
+        $('.login-box').css('z-index', 1);
+        profile_card.attr('class', 'profile-card-container animated fadeOutDown')
         setTimeout(function () {
-            $('.profile-card').hide();
+            $('.profile-card-container').hide();
             $('.mask').hide();
         }, 600);
-       // $('.profile-card').hide();
+        // $('.profile-card-container').hide();
 
     }
 
@@ -89,7 +92,7 @@ $('#login_btn').on('click', function (e) {
     console.log($("#login_form").serializeObject());
     $.ajax({
         type: "post",
-        url: "http://127.0.0.1/login",
+        url: otakuyApi + "/login",
         processData: false,
         datatype: "application/json",
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
@@ -106,13 +109,13 @@ $('#login_btn').on('click', function (e) {
             $('#username').html(user.username);
             $('#intro').val(user.intro);
             $('#starcount').html(user.star);
-            $('.loginbox').children().hide();
+            $('.login-box').children().hide();
             $('#avatar').show();
             setTimeout(function () {
-                $('.container').hide();
+                $('.login-box-container').hide();
             }, 500);
             $('.mask').hide();
-            $('.beerbox').css('z-index', 1);
+            $('.beer-box').css('z-index', 1);
             getNotificationCount();
 
         },
@@ -136,7 +139,7 @@ $('#register_btn').on('click', function (e) {
     console.log($("#register_form").serializeObject());
     $.ajax({
         type: "post",
-        url: "http://127.0.0.1/register",
+        url: otakuyApi + "/register",
         headers: {
             verificationCodeId: $("#verification_code").attr("verification_id"),
             verificationCode: $("#verification_code").val(),
@@ -170,7 +173,7 @@ $('#reset_btn').on('click', function (e) {
     console.log($("#reset_form").serializeObject());
     $.ajax({
         type: "get",
-        url: "http://127.0.0.1/forgetPassword?email=" + $('#reset_email').val(),
+        url: otakuyApi + "/forgetPassword?email=" + $('#reset_email').val(),
         datatype: "application/json",
         contentType: 'application/json',
         success: function (data, textStatus, request) {
@@ -197,7 +200,7 @@ $('#verification_img').on('click', function () {
     if (!$('.formBox').hasClass('level-reg')) {
         $.ajax({
             type: "get",
-            url: "http://127.0.0.1/verificationCode",
+            url: otakuyApi + "/verificationCode",
             datatype: "application/json",
             success: function (data) {
                 //   console.log( data.data.id);
@@ -213,7 +216,7 @@ $('#verification_img').on('click', function () {
 $('#goto_register_form').on('click', function () {
     $.ajax({
         type: "get",
-        url: "http://127.0.0.1/verificationCode",
+        url: otakuyApi + "/verificationCode",
         datatype: "application/json",
         success: function (data) {
             //   console.log( data.data.id);

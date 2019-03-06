@@ -3,36 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/searchbox.css">
-    <link rel="stylesheet" href="css/slideshow.css">
-    <link rel="stylesheet" href="css/helpbox.css">
-    <link rel="stylesheet" href="css/loginbox.css">
-    <link rel="stylesheet" href="css/beerbox.css">
-    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/profile-card.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/searchbox.css">
+    <link rel="stylesheet" href="css/carousel-container.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/profile-card-container.css">
     <link rel="stylesheet" href="css/album.css">
     <link rel="stylesheet" href="css/notification.css">
     <link rel="stylesheet" href="css/editAlbum.css">
     <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/comment.css">
-    <link rel="stylesheet" href="css/waterfall.css">
+    <link rel="stylesheet" href="css/waterfall-container.css">
     <link rel="stylesheet" href="css/revision.css">
-    <link rel="stylesheet" href="css/notification-box.css">
-    <link rel="stylesheet" href="css/notifation-list.css">
+    <link rel="stylesheet" href="css/notifation-container.css">
 </head>
 <body>
-<div class='loginbox'>
-    <img id="avatar" >
+<div class='login-box'>
+    <img id="avatar">
     <div class='wave -one'></div>
     <div class='wave -two'></div>
     <div class='wave -three'></div>
     <div class='title'>Login</div>
 </div>
-<div class="beerbox">
+<div class="beer-box">
     <img id="beerimg" src="img/beer1.svg"/>
 </div>
-<div id="helpbox">
+<div id="help-box">
     <div class="outer">
         <div class="inner"></div>
     </div>
@@ -56,75 +54,19 @@
         <span class="notification--num">0</span>
     </div>
 </div>
-<div class="notification-bell-container">
+<div class="notification-container">
     <div class="triangle3"></div>
     <div class="tab-group">
         <section id="false" title="未读">
-            <div class="notification-item" album-id="">
-                <h3>
-                    2019-10-01
-                </h3>
-                <p>
-                    您维护的专辑收到一条修改请求
-                </p>
-            </div>
-
-            <div class="notification-item">
-                <h3>
-                    2019-10-01
-                </h3>
-                <p>
-                    您维护的专辑收到一条修改请求
-                </p>
-            </div>
-            <div class="notification-item">
-                <h3>
-                    2019-10-01
-                </h3>
-                <p>
-                    您维护的专辑收到一条修改请求
-                </p>
-            </div>
-            <div class="notification-item">
-                <h3>
-                    2019-10-01
-                </h3>
-                <p>
-                    您维护的专辑收到一条修改请求
-                </p>
-            </div>
-            <div class="notification-item">
-                <h3>
-                    2019-10-01
-                </h3>
-                <p>
-                    您维护的专辑收到一条修改请求
-                </p>
-            </div>
-            <div class="notification-item">
-                <h3>
-                    2019-10-01
-                </h3>
-                <p>
-                    您维护的专辑收到一条修改请求
-                </p>
-            </div>
         </section>
         <section id="true" title="已读">
-            <h3>
-                Content 2
-            </h3>
-            <p>
-                Donec congue ligula non risus dictum, eget vehicula diam mattis. Pellentesque at ante ipsum. Suspendisse
-                rutrum elementum dolor, non congue risus sagittis id.
-            </p>
         </section>
     </div>
 </div>
-<div id="carousel"></div>
+<div id="carousel-container"></div>
 <form class="search-form" onsubmit="return false;">
     <input type="text" value="" placeholder="(●'◡'●)ﾉ♥關鍵字の輸入" class="search-input">
-    <button  class="search-button" type="button">
+    <button class="search-button" type="button">
         <svg class="submit-button">
             <use xlink:href="#icon-lamian"></use>
         </svg>
@@ -133,7 +75,7 @@
         <div>
             <input name="type" type="radio" value="byTitle" id="type-title" checked="true">
             <label for="type-title">
-                <svg class="edit" >
+                <svg class="edit">
                     <use xlink:href="#icon-album"></use>
                 </svg>
                 <span>Title</span>
@@ -159,13 +101,13 @@
         </div>
     </div>
 </form>
-<div id="waterfall">
+<div id="waterfall-container">
 </div>
 <!--<div class="loader" id="loader">
     <img class="loaderimg" src="img/loading.svg">
 </div>-->
 
-<div class="container">
+<div class="login-box-container">
     <div class="formBox level-login">
         <div class="box boxShaddow"></div>
         <div class="box loginBox">
@@ -245,7 +187,7 @@
                 </div>
                 <div class="f_row last">
                     <label>验证码</label>
-                    <input type="text" id="verification_code" verification_id="123"  class="input-field"
+                    <input type="text" id="verification_code" verification_id="123" class="input-field"
                            pattern="[a-zA-Z0-9]{6,20}" required>
                     <img id="verification_img"
                          src="data:image/jpeg;base64,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">
@@ -269,24 +211,24 @@
     </div>
 </div>
 
-<div class="profile-card">
+<div class="profile-card-container">
     <div class="middle-div">
         <div class="inner-middle-div">
             <div class="card-body">
                 <div class="user-info">
                     <div class="user-pic">
-                        <input  type='file' id="imageUpload" accept=".png, .jpg, .jpeg" style="display: none;"/>
+                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" style="display: none;"/>
                         <label for="imageUpload">
             <span class="edit">
           <i class="fas fa-camera"></i>
         </span></label>
                     </div>
                     <h3 class="user-name" id="username"></h3>
-                    <input class="intro" id="intro" readonly  value="">
+                    <input class="intro" id="intro" readonly value="">
                     <svg id="intro_edit" class="edit_btn">
                         <use xlink:href="#icon-edit"></use>
                     </svg>
-                    <svg id="sign-out" >
+                    <svg id="sign-out">
                         <use xlink:href="#icon-tuichu"></use>
                     </svg>
                 </div>
@@ -311,17 +253,17 @@
             <img class="cover" src="">
             <div class="title"></div>
             <div class="artist"></div>
-            <svg  class="edit_btn">
+            <svg class="edit_btn">
                 <use xlink:href="#icon-edit2-copy"></use>
             </svg>
         </div>
     </div>
 </div>
 
-<div class="album" id="album">
+<div class="album-container" id="album">
     <div class="albumdetail">
         <div class="profile-bg"></div>
-        <section class="album-container">
+        <section class="album-info">
             <aside class="profile-image">
             </aside>
             <section class="profile-info">
@@ -343,7 +285,7 @@
             <svg id="comment-button">
                 <use xlink:href="#icon-pinglun"></use>
             </svg>
-            <div class="control-center"  id="star-button">
+            <div class="control-center" id="star-button">
                 <ul class="right-sidebar">
                     <li class="starcount">15</li>
                     <li class="starcount">20</li>
@@ -362,14 +304,6 @@
     </div>
     <div id="commentbox">
         <div id="commentlist">
-            <div class="comment" user-id="123456" user-username="Miro Badev">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg"/>
-                <div class="userinfo" >
-                    <strong>Miro Badev</strong>
-                </div>
-                <div class="content">@ <a href="#">VtoEXL</a> xxxxxxx</div>
-                <div class="createTime">2019-10-10</div>
-            </div>
         </div>
         <form id="commitcomment">
             <input type="text" id="to-username" readonly="readonly" value="@ up" to_id="" to_name=""/>
@@ -378,7 +312,6 @@
         </form>
         <div class="triangle"></div>
     </div>
-
     <div id="revision-container">
         <div class="cont_heg_50"></div>
         <div class="cont_select_center">
@@ -406,22 +339,14 @@
                 </div>
             </div>
             <div class="revision-edit">
-                <form id="revision-edit_form" album-id="">
+                <form id="revision-edit_form" album-id="" onsubmit="return false;">
                 </form>
             </div>
         </div> <!-- End div center   -->
-        <div class="revision-queue">
-            <div class="revision">
-                "233333"
-            </div>
-            <div class="revision">
-                "233333"
-            </div>
-        </div>
+        <div class="revision-queue"></div>
         <img id="revison-submit" src="img/plane.svg">
         <div class="triangle2"></div>
     </div>
-
 </div>
 <form id="album_form" album-id="">
     <div class="line-editable">
@@ -453,13 +378,13 @@
         </label>
     </div>
     <div class="tracks-input">
-        <input autocomplete="off" id="track-sum" placeholder="" type="text"   />
+        <input autocomplete="off" id="track-sum" placeholder="" type="text"/>
         <div class="tip">输入歌曲数量后回车生成表单</div>
         <div id="tracks">
         </div>
     </div>
     <div class="tag-list-container">
-        <input class="tag-list-input" type="text" placeholder="標簽の輸入" />
+        <input class="tag-list-input" type="text" placeholder="標簽の輸入"/>
     </div>
     <div class="line-editable">
         <input autocomplete="off" placeholder="仅供学习的下载链接" type="text" class="Field_Input album-input-res" name="res"/>
@@ -489,7 +414,7 @@
         </label>
     </div>
     <div class="line-editable">
-        <input autocomplete="off" placeholder="专辑封面" type="file" id="cover-upload" class="Field_Input"  />
+        <input autocomplete="off" placeholder="专辑封面" type="file" id="cover-upload" class="Field_Input"/>
         <label>
             <div>专辑封面</div>
         </label>
@@ -537,7 +462,7 @@
 </div>
 <div class="mask"></div>
 </body>
-<script type="text/javascript" src="//at.alicdn.com/t/font_1048075_0v19j7sj9zb.js"></script>
+<script type="text/javascript" src="//at.alicdn.com/t/font_1048075_msz0pz7j3zl.js"></script>
 <script type="text/javascript" src="js/jq.js"></script>
 <script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/init.js"></script>
@@ -546,7 +471,7 @@
 <script type="text/javascript" src="js/slideshow.js"></script>
 <script type="text/javascript" src="js/icon_animation.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
-<script type="text/javascript" src="js/profile-card.js"></script>
+<script type="text/javascript" src="js/profile-card-container.js"></script>
 <script type="text/javascript" src="js/album.js"></script>
 <script type="text/javascript" src="js/editAlbum.js"></script>
 <script type="text/javascript" src="js/comment.js"></script>

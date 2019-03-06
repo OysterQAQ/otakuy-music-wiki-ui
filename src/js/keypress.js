@@ -13,7 +13,7 @@ $(document).keypress(function (e) {
                 headers: {
                     Authorization: $.cookie('Authorization')
                 },
-                url: "http://127.0.0.1/users/" + JSON.parse(window.localStorage.user).id + "/intro?intro=" + $('#intro').val(),
+                url: otakuyApi + "/users/" + JSON.parse(window.localStorage.user).id + "/intro?intro=" + $('#intro').val(),
                 contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
                 success: function (data, textStatus, request) {
                     window.localStorage.setItem("user", JSON.stringify(data.data))
@@ -24,7 +24,7 @@ $(document).keypress(function (e) {
                     notification(false, "修改简介失败");
                 }
             });
-            console.log("http://127.0.0.1/" + JSON.parse(window.localStorage.user).id + "/intro?intro=" + $('#intro').val())
+            console.log(otakuyApi + "/" + JSON.parse(window.localStorage.user).id + "/intro?intro=" + $('#intro').val())
             $('#intro').attr("readonly", "");
 
         }
@@ -41,7 +41,7 @@ $(document).keypress(function (e) {
                 headers: {
                     Authorization: $.cookie('Authorization')
                 },
-                url: "http://127.0.0.1/albums/" + comment.album+ "/comments" ,
+                url: otakuyApi + "/albums/" + comment.album + "/comments",
                 contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
                 data: JSON.stringify(comment),
                 success: function (data, textStatus, request) {

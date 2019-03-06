@@ -49,8 +49,10 @@
                 // Setup events
                 $tabs.on('click', function (e) {
                     activateTab($(this).find('a').attr('href'));
-                    console.log($(this).find('a').attr('href').substring(1))
-                    getNotificationList($(this).find('a').attr('href').substring(1))
+                    console.log($(this).find('a').attr('href').substring(1));
+                    var isRead = $(this).find('a').attr('href').substring(1) === "false" ? false : true;
+                    getNotificationList(isRead)
+                    $("#" + !isRead).html('');
                     e.preventDefault();
                 });
 
@@ -79,10 +81,17 @@ var getNotificationList = function (isRead) {
         headers: {
             Authorization: $.cookie('Authorization')
         },
-        url: "http://127.0.0.1/notifications?isRead=" + isRead,
+        url: otakuyApi + "/notifications?isRead=" + isRead,
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         success: function (data, textStatus, request) {
             console.log(data)
+            var html = '';
+            if (data.data != null) {
+                $.each(data.data, function (index, element) {
+                    html += '  <div class="notification-item" album-id="' + element.albumId + '"> <h3>' + element.creatTime + '</h3><p>' + element.content + '</p></div>';
+                });
+                $("#" + isRead).html(html)
+            }
             //   notification(true, "共有"+data.data.length+"条未读消息");
         },
         error: function (data, textStatus, request) {

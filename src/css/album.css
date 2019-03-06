@@ -1,5 +1,5 @@
 
-.album {
+.album-container {
     z-index: 2;
     display: none;
     margin: auto;
@@ -38,7 +38,7 @@
     z-index: -1;
 }
 
-.album-container {
+.album-info {
     display: flex;
     flex-direction: row;
     align-items: stretch;

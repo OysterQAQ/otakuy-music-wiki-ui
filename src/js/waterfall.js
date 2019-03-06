@@ -1,7 +1,7 @@
 var getAlbumList = function (filter, param, page) {
     $.ajax({
         type: "get",
-        url: "http://127.0.0.1/albums?filter=" + filter + "&param=" + param + "&page=" + page,
+        url: otakuyApi + "/albums?filter=" + filter + "&param=" + param + "&page=" + page,
         headers: {
             Authorization: $.cookie('Authorization')
         },
@@ -18,7 +18,7 @@ var getAlbumList = function (filter, param, page) {
                     + element.title + '</h1><div class="box-stats"></div></div> </div><div class="box-overlay-header"></div><div class="box-body"><img src="'
                     + 'https://wx3.sinaimg.cn/large/006346uDgy1frhqntbghfj3074074tbk.jpg' + '" class="box-body-image" user-id="' + element.owner + '"/><span class="box-body-stats">' + element.createTime + '</span> </div> </div>'
             });
-            $('#waterfall').html(html)
+            $('#waterfall-container').html(html)
             console.log(albums)
         },
         error: function () {
