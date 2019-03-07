@@ -85,8 +85,9 @@ var getNotificationList = function (isRead) {
             console.log(data)
             //   notification(true, "共有"+data.data.length+"条未读消息");
         },
-        error: function (data, textStatus, request) {
-            notification(false, "获取消息错误");
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            notification(false, XMLHttpRequest.responseJSON.message)
+
         }
     });
 }

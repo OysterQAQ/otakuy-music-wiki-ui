@@ -16,7 +16,7 @@ var getComment = function (album) {
             var html = '';
             data=data.data;
             $.each(data, function (index, element) {
-                html += ('<div class="comment" onclick="reply(this)" user-id="' + element.from_id) + '" user-username="' + element.from_username + '"><img src="https://avatar.otakuy.com/' + element.from_id + '.jpg"/><div class="userinfo" ><strong>' + element.from_username + '</strong></div><div class="content">@ <a href="#">' + element.to_username + '</a> ' + element.content + '</div><div class="createTime">' + element.createTime + '</div></div>'
+                html += ('<div class="comment" onclick="reply(this)" user-id="' + element.from_id) + '" user-username="' + element.from_username + '"><div class="avatar"><img src="https://avatar.otakuy.com/' + element.from_id + '.png"/></div><div class="userinfo" ><strong>' + element.from_username + '</strong></div><div class="content">@ <a href="#">' + element.to_username + '</a> ' + element.content + '</div><div class="createTime">' + element.createTime + '</div></div>'
             });
             $('#commentlist').html(html);
 

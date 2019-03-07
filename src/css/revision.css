@@ -202,3 +202,65 @@
 
     border-bottom: 1px solid #101f33;
 }
+
+
+.wait-revision-queue {
+    display: none;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    position: absolute;
+    width: 430px;
+    height: 250px;
+    background-color: #ffffff;
+    left: 85px;
+    top: 110px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.wait-revision {
+    position: relative;
+    min-height: 90px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom: 1px solid #ababab;
+    width: 370px;
+    height: auto;
+}
+
+.wait-revision h2 {
+    margin: 10px 0 0 0px;
+    color: #ababab;
+    font-size: 20px;
+}
+
+.wait-revision p {
+    margin: 10px 0px 0 0;
+    color: #767676;
+}
+
+.wait-revision h3 {
+    color: #ababab;
+    font-size: 15px;
+    text-align: right;
+    margin: 5px 0 0 0px;
+}
+
+.wait-revision svg {
+    cursor: pointer;
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+}
+
+.accept {
+    right: 50px;
+
+
+}
+
+.reject {
+    right: 10px;
+
+}

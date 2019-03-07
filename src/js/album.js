@@ -10,6 +10,9 @@ $('.album-icon.close').click(function () {
         album.hide();
         commentbox.hide();
         revisionbox.hide();
+        $('.revision-queue').empty();
+        $('.wait-revision-queue').empty();
+        $('.revision-edit_form').empty()
         album.attr('class', 'album-container');
         $('.mask').hide();
     }, 400);
@@ -35,6 +38,10 @@ $('.starcount').on('click', function () {
         data: JSON.stringify(star),
         success: function (data, textStatus, request) {
             notification(true, "打赏成功");
+            var user = JSON.parse(window.localStorage.user);
+            user.star -= star.num;
+            window.localStorage.setItem("user", JSON.stringify(user))
+
         },
         error: function (data, textStatus, request) {
             notification(false, "拥有star数不足or自己给自己打赏是不行的哦");

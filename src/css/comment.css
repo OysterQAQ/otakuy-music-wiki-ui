@@ -39,11 +39,18 @@
     cursor: pointer;
 }
 
-.comment img {
+.comment .avatar {
+    height: 40px;
     width: 40px;
+    display: block;
     border-radius: 50%;
     margin: 15px;
+    overflow: hidden;
     position: absolute;
+}
+
+.comment img {
+    width: 100%;
 }
 
 

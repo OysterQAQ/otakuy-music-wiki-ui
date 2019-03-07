@@ -15,6 +15,8 @@ $('#sign-out').click(function () {
     localStorage.clear();
     $('.profile-card-container').attr('class', 'profile-card-container animated fadeOutDown')
     $('.profile-card-container').hide();
+    $('.notification-container').hide()
+    $('.notification--num').html(0)
     $('.mask').hide();
     $('.login_info').get(0).innerHTML = "GO";
     $('.input-field.password').val('');

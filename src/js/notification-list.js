@@ -88,14 +88,21 @@ var getNotificationList = function (isRead) {
             var html = '';
             if (data.data != null) {
                 $.each(data.data, function (index, element) {
-                    html += '  <div class="notification-item" album-id="' + element.albumId + '"> <h3>' + element.creatTime + '</h3><p>' + element.content + '</p></div>';
+                    html += '  <div class="notification-item" album-id="' + element.albumId + '" onclick="toAlbum(this)"> <h3>' + element.creatTime + '</h3><p>' + element.content + '</p></div>';
                 });
                 $("#" + isRead).html(html)
             }
             //   notification(true, "共有"+data.data.length+"条未读消息");
         },
-        error: function (data, textStatus, request) {
-            notification(false, "获取消息错误");
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            notification(false, XMLHttpRequest.responseJSON.message)
+
         }
     });
+}
+
+function toAlbum(e) {
+    getAlbumDetail($(e).attr('album-id'));
+    $('.login-box').css('z-index', 1)
+
 }

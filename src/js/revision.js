@@ -114,8 +114,13 @@ function _select_option(indx, selc) {
         li_s[indx].className = 'active';
 
     }
-    ;
-    selectModificationPoint(modificationPoint[$(".cont_select_int > .active").attr('data-index')])
+
+    if ($('#album').attr('owner') == JSON.parse(window.localStorage.user).id) {
+        console.log("本人专辑")
+        getWaitRevisionList(modificationPoint[$(".cont_select_int > .active").attr('data-index')])
+
+    } else selectModificationPoint(modificationPoint[$(".cont_select_int > .active").attr('data-index')])
+
     select_optiones[indx].selected = true;
     select_.selectedIndex = indx;
     select_.onchange();
@@ -182,7 +187,7 @@ $('#revison-submit').on('click', function () {
 var getRevisionList = function (modificationPoint) {
     $.ajax({
         type: "GET",
-        url: otakuyApi + "/albums/" + $('#album_form').attr('album-id') + "/revisions?modificationPoint=" + modificationPoint,
+        url: otakuyApi + "/albums/" + $('#album').attr('album-id') + "/revisions?modificationPoint=" + modificationPoint,
         contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
         headers: {
             Authorization: $.cookie('Authorization')
@@ -205,19 +210,60 @@ var getRevisionList = function (modificationPoint) {
     });
 }
 
+var getWaitRevisionList = function (modificationPoint) {
+    $.ajax({
+        type: "GET",
+        url: otakuyApi + "/albums/" + $('#album').attr('album-id') + "/revisions?modificationPoint=" + modificationPoint,
+        contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
+        headers: {
+            Authorization: $.cookie('Authorization')
+        },
+        success: function (data, textStatus, request) {
+            var list = data.data;
+            var html = ''
+            if (list != null) {
+                $.each(list, function (e, t) {
+                    html += ' <div class="wait-revision" revision-id="' + t.id + '"><svg class="accept" onclick="submitRevision(this)"><use xlink:href="#icon-dui"></use></svg><svg class="reject" onclick="rejectRevision(this)"> <use xlink:href="#icon-cuowu"></use></svg> <h2>'
+                        + t.committerName + '</h2> <p>' + t.content + '</p><h3>' + t.createTime + '</h3></div>'
+                })
+            }
+            $('.wait-revision-queue').html(html)
+
+        },
+        error: function () {
+            //   notification(false, "自动匹配失败")
+        }
+    });
+}
+
+
+
 $('#rivision-button').on('click', function () {
     // getComment($('#album').attr('album-id'))
     var revisionbox = $('#revision-container');
 
+
     if (revisionbox.css('display') === 'none') {
-        /*   var to_username = $("#to-username");
-           to_username.val("@ up ");
-           to_username.attr('to_id', $('#album').attr('owner'));
-           to_username.attr('to_username', 'up')*/
+        if ($('#album').attr('owner') == JSON.parse(window.localStorage.user).id) {
+            console.log("本人专辑")
+            $('#revison-submit').hide();
+            $('.revision-queue').hide();
+            $('.revision-edit').hide();
+            $('.wait-revision-queue').show();
+
+        } else {
+            $('#revison-submit').show();
+            $('.revision-queue').show();
+            $('.revision-edit').show();
+            $('.wait-revision-queue').hide();
+        }
         revisionbox.attr("class", "animated bounceIn");
         revisionbox.show();
     } else {
         revisionbox.attr("class", "animated bounceOut");
+        $('.revision-queue').empty();
+        $('.wait-revision-queue').empty();
+        $('.revision-edit_form').empty()
         setTimeout(function () {
             revisionbox.hide();
         }, 600);
@@ -225,3 +271,40 @@ $('#rivision-button').on('click', function () {
     }
 
 });
+
+function submitRevision(e) {
+    $.ajax({
+        type: "GET",
+        url: otakuyApi + "/albums/" + $('#album').attr('album-id') + "/revisions/" + $(e).parent('.wait-revision').attr('revision-id'),
+        contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
+        headers: {
+            Authorization: $.cookie('Authorization')
+        },
+        success: function (data, textStatus, request) {
+            notification(true, "应用修改成功")
+            getWaitRevisionList(modificationPoint[$(".cont_select_int > .active").attr('data-index')])
+        },
+        error: function () {
+            notification(false, "应用修改失败")
+        }
+    });
+}
+
+function rejectRevision(e) {
+    $.ajax({
+        type: "DELETE",
+        url: otakuyApi + "/albums/" + $('#album').attr('album-id') + "/revisions/" + $(e).parent('.wait-revision').attr('revision-id'),
+        contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
+        headers: {
+            Authorization: $.cookie('Authorization')
+        },
+        success: function (data, textStatus, request) {
+            notification(true, "拒绝修改成功")
+            getWaitRevisionList(modificationPoint[$(".cont_select_int > .active").attr('data-index')])
+        },
+        error: function () {
+            notification(false, "拒绝修改失败")
+        }
+    });
+}
+

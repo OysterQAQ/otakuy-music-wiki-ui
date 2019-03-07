@@ -58,7 +58,10 @@ $('#avatar').on('click', function (e) {
 
                     $('#albumlist').html(html);
                     $('#albumcount').html(albums.length);
-                } else $('#albumcount').html(0);
+                } else {
+                    $('#albumcount').html(0);
+                    $('#albumlist').html('');
+                }
                 $('#starcount').html(JSON.parse(window.localStorage.user).star);
                 $('.user-pic').css("background-image","url("+JSON.parse(window.localStorage.user).avatar+")");
 
@@ -119,12 +122,12 @@ $('#login_btn').on('click', function (e) {
             getNotificationCount();
 
         },
-        error: function () {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             //请求出错处理
             inP.parent('.f_row').addClass('shake');
             $('.password').val('');
             $('.login_info').get(0).innerHTML = "登录失败";
-            notification(false,"登录失败")
+            notification(false, XMLHttpRequest.responseJSON.message)
             setTimeout(function () {
                 $('.login_info').get(0).innerHTML = "GO";
             }, 700);
@@ -184,9 +187,9 @@ $('#reset_btn').on('click', function (e) {
                 $('.formBox').removeClass('level-forget').addClass('level-login');
             }, 700);
         },
-        error: function () {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             $('#reset_btn').html("发送失败");
-            notification(false,"发送失败");
+            notification(false, XMLHttpRequest.responseJSON.message)
             inP.parent('.f_row').addClass('shake');
             setTimeout(function () {
                 $('#reset_btn').html("RESET");
