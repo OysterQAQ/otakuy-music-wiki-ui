@@ -60,6 +60,8 @@ $(document).keypress(function (e) {
             param = $('.search-input').val();
             page = 0;
             row = 0;
+            flag = true;
+            $('#waterfall-container').html('')
             getAlbumList(filter, param, page);
         }
 

@@ -1,10 +1,11 @@
 var page = 0,
     row = 0,
-    flag = false,
-    filter = '',
+    flag = true,
+    filter = 'byTime',
     param = '',
     isLogin = false,
-    otakuyApi = 'http://api.otakuy.com';
+    over = false,
+    otakuyApi = 'http://127.0.0.1:8080';
 $(document).ready(function () {
     if ($.cookie("Authorization") != null) {
         var user = JSON.parse(window.localStorage.user);
@@ -117,4 +118,17 @@ function getAlbumDetail(albumId) {
         }
 
     });
+}
+
+function choke(func, wait) {
+    var lastTime = 0;
+    return function () {
+        var _self = this,
+            _arg = arguments;
+        var nowTime = Date.now();
+        if (nowTime - lastTime > wait) {
+            func.apply(_self, _arg);
+            lastTime = nowTime;
+        }
+    }
 }

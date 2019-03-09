@@ -1,7 +1,8 @@
-var getAlbumList = function (filter, param, page) {
+var getAlbumList = function (filter, param, currpage) {
+    flag = false;
     $.ajax({
-        type: "get",
-        url: otakuyApi + "/albums?filter=" + filter + "&param=" + param + "&page=" + page,
+        type: "GET",
+        url: otakuyApi + "/albums?filter=" + filter + "&param=" + param + "&page=" + currpage,
         headers: {
             Authorization: $.cookie('Authorization')
         },
@@ -11,15 +12,25 @@ var getAlbumList = function (filter, param, page) {
             var html = '';
 
             $.each(albums, function (i, element) {
-                if (i != 0 && i % 4 == 0)
+                if (i % 4 == 0) {
                     row++;
-                html += '<div class="waterfall-box"  style="left: ' + (i % 4) * 240 + 'px; top: ' + row * 240 + '' +
+                    console.log(row)
+                }
+
+                html += '<div class="waterfall-box"  style="left: ' + (i % 4) * 240 + 'px; top: ' + (row - 1) * 240 + '' +
                     'px;background-image: url(\'' + element.cover + '\');"><div class="box-header-container"><div class="box-header"><h1 class="box-main-heading" onclick="clickToGetAlbumDetail(this)" album-id="' + element.id + '">'
                     + element.title + '</h1><div class="box-stats"></div></div> </div><div class="box-overlay-header"></div><div class="box-body"><img src="'
-                    + 'https://wx3.sinaimg.cn/large/006346uDgy1frhqntbghfj3074074tbk.jpg' + '" class="box-body-image" user-id="' + element.owner + '"/><span class="box-body-stats">' + element.createTime + '</span> </div> </div>'
+                    + 'https://avatar.otakuy.com/' + element.owner + '.png" class="box-body-image" user-id="' + element.owner + '"/><span class="box-body-stats">' + element.createTime + '</span> </div> </div>'
             });
-            $('#waterfall-container').html(html)
-            console.log(albums)
+            $('#waterfall-container').append(html)
+            page++;
+            if (albums.length != 16) {
+                over = true;
+                $('.footer').css('top', (row - 1) * 240 + 1200 + 'px')
+            }
+            flag = true;
+
+
         },
         error: function () {
             //请求出错处理
@@ -28,7 +39,15 @@ var getAlbumList = function (filter, param, page) {
 
     });
 }
-getAlbumList('byTime', '', 0);
+$(document).ready(function () {
+    $(window).scroll(function () {
+        if ($(document).scrollTop() >= $(document).height() - $(window).height() - 100) {
+            if (!over && flag)
+                choke(getAlbumList(filter, param, page), 300);
+        }
+    });
+});
+getAlbumList(filter, '', page);
 var clickToGetAlbumDetail = function (e) {
     getAlbumDetail($(e).attr('album-id'))
 }

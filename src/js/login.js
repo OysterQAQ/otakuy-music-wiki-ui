@@ -181,19 +181,14 @@ $('#reset_btn').on('click', function (e) {
         contentType: 'application/json',
         success: function (data, textStatus, request) {
             console.log(data)
-            $('#reset_btn').html("发送成功");
             notification(true,"发送成功");
             setTimeout(function () {
                 $('.formBox').removeClass('level-forget').addClass('level-login');
             }, 700);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            $('#reset_btn').html("发送失败");
             notification(false, XMLHttpRequest.responseJSON.message)
             inP.parent('.f_row').addClass('shake');
-            setTimeout(function () {
-                $('#reset_btn').html("RESET");
-            }, 1000);
         }
     });
 });

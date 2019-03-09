@@ -18,7 +18,7 @@
 <body>
 <div class="ok-body">
     <!--form表单-->
-    <form class="layui-form ok-form">
+    <form class="layui-form ok-form" album-id="" id="album" onsubmit="return false;">
         <div class="layui-form-item">
             <label class="layui-form-label">标题</label>
             <div class="layui-input-block">
@@ -29,6 +29,12 @@
             <label class="layui-form-label">艺术家</label>
             <div class="layui-input-block">
                 <div class="text" id="artists"></div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">封面</label>
+            <div class="layui-input-block">
+                <div class="text"><img id="cover" src="" style="width: 300px"></div>
             </div>
         </div>
         <div class="layui-form-item">
@@ -79,58 +85,29 @@
                 <div class="text" id="publisher"></div>
             </div>
         </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn submitAlbum" style="display: none"
+                        onclick="updateAlbumStatusInDetail('active')">审核通过
+                </button>
+                <button class="layui-btn rejectAlbum" style="display: none"
+                        onclick="updateAlbumStatusInDetail('reject')">拒绝请求
+                </button>
+                <button class="layui-btn recommendAlbum" style="display: none"
+                        onclick="updateAlbumIsRecommendInDetail(true)">设为推荐
+                </button>
+                <button class="layui-btn noRecommendAlbum" style="display: none"
+                        onclick="updateAlbumIsRecommendInDetail(false)">设为不推荐
+                </button>
+            </div>
+        </div>
     </form>
 </div>
 <!--js逻辑-->
-<script type="text/javascript" src="../src/js/jq.js"></script>
+<script type="text/javascript" src="lib/layui/layui.all.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
 <script>
     console.log(GetQueryString('album'))
-
-    function GetQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) return unescape(r[2]);
-        return null;
-    }
-
-    function getAlbumDetail(album) {
-        jQuery.ajax({
-            type: "GET",
-            headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiIsIlJPTEVfQURNSU4iXSwiaWQiOiI1YzcxMzk2OGU4NmMyYzAyMjRiNWFjMTAiLCJ1c2VybmFtZSI6IueUn-ianVFBUSIsInN1YiI6IueUn-ianVFBUSIsImlhdCI6MTU1MjAxMzMyMCwiZXhwIjoxNTUyODc3MzIwfQ.JFLg-sMiud9IYrLYO4UiD8ajn_x8lOs6mnN46iU0iZFiSRo7tlp1MJalwpkDtDYmX6IUXau93EkUTBpoptE5mQ'
-            },
-            url: 'http://127.0.0.1/admin/albums/' + album,
-            contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
-            success: function (data, textStatus, request) {
-                console.log(data)
-                data = data.data;
-                var tracks = '';
-                $.each(data.tracks, function (index, element) {
-                    tracks += (index + 1) + '. ' + element.title + '<br>';
-                });
-                var tags = '';
-                $.each(data.tags, function (index, element) {
-                    tags += element.name + '&nbsp;&nbsp;';
-                });
-                var artists = '';
-                $.each(data.artists, function (index, element) {
-                    tags += element.name + '&nbsp;&nbsp;';
-                });
-                $('#artists').html(artists);
-                $('#title').html(data.title);
-                $('#intro').html(data.intro);
-                $('#downloadRes').html(JSON.stringify(data.downloadRes));
-                $('#genres').html(data.genres);
-                $('#tracks').html(tracks);
-                $('#tags').html(tags);
-                $('#version').html(data.version);
-                $('#pubdate').html(data.pubdate);
-                $('#publisher').html(data.publisher);
-            },
-            error: function (data, textStatus, request) {
-            }
-        });
-    }
 
     getAlbumDetail(GetQueryString('album'))
 
