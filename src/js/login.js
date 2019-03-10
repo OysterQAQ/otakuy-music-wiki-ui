@@ -36,7 +36,7 @@ $('.regTag').click(function (e) {
 });
 $('#avatar').on('click', function (e) {
     var profile_card = $('.profile-card-container')
-    if (profile_card.css('display') == 'none'||profile_card.hasClass('fadeOutDown')) {
+    if (profile_card.css('display') == 'none') {
         $.ajax({
             type: "get",
             url: otakuyApi + "/uers/" + JSON.parse(window.localStorage.user).id + "/albums/active?page=0",
@@ -52,7 +52,7 @@ $('#avatar').on('click', function (e) {
                         var artist = element.artists.map(function (item) {
                             return item.name;
                         }).join(' ');
-                        html += ('<div class="albuminfo" album_id="' + element.id) + '"><img class="cover" src="' + element.cover + '"><div class="title">' + element.title + '</div><div class="artist">' + artist + '</div><svg  class="edit_btn" id="' + element.id + '"><use xlink:href="#icon-edit2-copy"></use></svg></div>'
+                        html += ('<div class="albuminfo" album_id="' + element.id) + '"><img class="cover" src="' + element.cover + '"><div class="title">' + element.title + '</div><div class="artist">' + artist + '</div><svg  class="edit_btn" onclick="edit_album(this)" id="' + element.id + '"><use xlink:href="#icon-edit2-copy"></use></svg></div>'
 
                     });
 
@@ -159,9 +159,10 @@ $('#register_btn').on('click', function (e) {
                 $('.formBox').removeClass('level-reg').addClass('level-login');
             }, 700);
         },
-        error: function () {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             $('#register_btn').html("注册失败");
-            notification(false,"注册失败");
+            notification(false, XMLHttpRequest.responseJSON.message);
+            getVerificationCode();
             inP.parent('.f_row').addClass('shake');
             setTimeout(function () {
                 $('#register_btn').html("CREATE");
@@ -196,22 +197,14 @@ $('#reset_btn').on('click', function (e) {
 
 $('#verification_img').on('click', function () {
     if (!$('.formBox').hasClass('level-reg')) {
-        $.ajax({
-            type: "get",
-            url: otakuyApi + "/verificationCode",
-            datatype: "application/json",
-            success: function (data) {
-                //   console.log( data.data.id);
-                $("#verification_code").attr("verification_id", data.data.id);
-                $("#verification_img").attr("src", "data:image/jpeg;base64," + data.data.imageBase64);
-            },
-            error: function () {
-                notification(false,"获取验证码失败");
-            }
-        });
+        getVerificationCode();
     }
 });
 $('#goto_register_form').on('click', function () {
+    getVerificationCode();
+});
+
+function getVerificationCode() {
     $.ajax({
         type: "get",
         url: otakuyApi + "/verificationCode",
@@ -225,5 +218,4 @@ $('#goto_register_form').on('click', function () {
             notification(false,"获取验证码失败");
         }
     });
-});
-
+}

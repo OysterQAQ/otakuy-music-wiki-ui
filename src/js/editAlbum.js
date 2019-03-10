@@ -281,6 +281,29 @@ function getDoubanDetail(item) {
     });
 }
 
+function autofull(data) {
+    data = data.data;
+    var tracks = '';
+    var artist = data.artists.map(function (item) {
+        return item.name;
+    }).join('/');
+    $.each(data.tracks, function (i, element) {
+        tracks += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="pubdate" value="' + element.title + '" /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
+    });
+    $('#tracks').html(tracks)
+    $('.album-input-title').val(data.title);
+    $('.album-input-artists').val(artist);
+    $('.album-input-intro').val(data.intro);
+    $('.album-input-pubdate').val(data.pubdate);
+    $('.album-input-publisher').val(data.publisher);
+    $('.album-input-genres').val(data.genres);
+    $('.album-input-version').val(data.version);
+    $.each(data.tags, function (i, element) {
+        $('.tag-list-container').prepend('<span class="tag">' + element.name + '</span>')
+    });
+
+}
+
 $('#submit-button').click(function () {
     /*   console.log( $('#album-input-artists').val().split('/').map(function (num) {
            var artist={};
@@ -288,7 +311,83 @@ $('#submit-button').click(function () {
                return artist;
            }
        ));*/
+    var album = getFormDetail();
+    console.log(album.id)
+    var file = $("#cover-upload").get(0).files[0];
+    var formData = new FormData();
+    console.log(file)
+    if (file != null)
+        formData.append("file", file);
+    var type = '';
+    var url = '';
+
+    if (album.id == '') {
+        type = "POST"
+        url = '/albums'
+    } else {
+        type = "PUT"
+        url = '/albums/' + album.id
+    }
+    $.ajax({
+        type: type,
+        url: otakuyApi + url,
+        contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
+        headers: {
+            Authorization: $.cookie('Authorization')
+        },
+        datatype: "application/json",
+        data: JSON.stringify(album),
+        success: function (data, textStatus, request) {
+            album.id = data.data.id;
+            console.log(formData.get('file'))
+            if (formData.get('file') != undefined) {
+                $.ajax({
+                    url: otakuyApi + "/albums/" + album.id + "/covers",
+                    type: 'PUT',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        Authorization: $.cookie('Authorization')
+                    },
+                    beforeSend: function () {
+                        console.log("正在进行，请稍候");
+                    },
+                    success: function (data) {
+                        notification(true, "专辑发布成功,等待管理员审核")
+
+                    },
+                    error: function (data) {
+                        notification(false, "封面上传失败")
+                        console.log(data);
+                    }
+                });
+            }
+            notification(true, "专辑发布成功,等待管理员审核")
+            $('.beer-box').css('z-index', 1);
+            if (type == 'POST')
+                $('.mask').hide();
+            $('#album_form').attr('album-id', '');
+            $('#suggest-album').html('');
+            $('#suggest-album').hide();
+            $('#album_form').hide();
+            $('#album_form input').val('');
+            $('.album-input-intro').val('');
+            $('.tag').remove()
+            $('.track').remove();
+
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            notification(false, XMLHttpRequest.responseJSON.message)
+        }
+    });
+
+
+});
+
+function getFormDetail() {
     var album = {};
+    album.id = $('#album_form').attr('album-id');
     album.artists = $('.album-input-artists').val().split('/').map(function (num) {
             var artist = {};
             artist.name = num;
@@ -312,62 +411,12 @@ $('#submit-button').click(function () {
     album.publisher = $('.album-input-publisher').val();
     album.genres = $('.album-input-genres').val();
     album.version = $('.album-input-version').val();
-    album.downloadRes={};
+    album.downloadRes = {};
     album.downloadRes.permission = $('.album-input-res-permission').val();
     album.downloadRes.url = $('.album-input-res').val();
     album.downloadRes.password = $('.album-input-res-password').val();
     album.downloadRes.unzipKey = $('.album-input-res-zip').val();
-if(album.downloadRes.permission=='')
-    album.downloadRes.permission=0;
-    console.log(album)
-    var file = $("#cover-upload").get(0).files[0];
-    var formData = new FormData();
-    formData.append("file", file);
-
-    $.ajax({
-        type: "post",
-        url: otakuyApi + "/albums",
-        contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
-        headers: {
-            Authorization: $.cookie('Authorization')
-        },
-        datatype: "application/json",
-        data: JSON.stringify(album),
-        success: function (data, textStatus, request) {
-            album.id = data.data.id;
-            $.ajax({
-                url: otakuyApi + "/albums/" + album.id + "/covers",
-                type: 'PUT',
-                data: formData,
-                processData: false,
-                contentType: false,
-                headers: {
-                    Authorization: $.cookie('Authorization')
-                },
-                beforeSend: function () {
-                    console.log("正在进行，请稍候");
-                },
-                success: function (data) {
-                    notification(true, "专辑发布成功,等待管理员审核")
-                    $('.beer-box').css('z-index', 1);
-                    $('.mask').hide();
-                    $('#suggest-album').html('');
-                    $('#suggest-album').hide();
-                    $('#album_form').hide();
-                    $('#album_form input').val('');
-                    $('.album-input-intro').html('');
-                },
-                error: function (data) {
-                    notification(false, "封面上传失败")
-                    console.log(data);
-                }
-            });
-
-        },
-        error: function () {
-            notification(false, "专辑发布失败")
-        }
-    });
-
-
-});
+    if (album.downloadRes.permission == '')
+        album.downloadRes.permission = 0;
+    return album;
+}

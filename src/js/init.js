@@ -5,7 +5,8 @@ var page = 0,
     param = '',
     isLogin = false,
     over = false,
-    otakuyApi = 'http://127.0.0.1:8080';
+    //otakuyApi = 'http://127.0.0.1:8080';
+    otakuyApi = 'https://api.otakuy.com';
 $(document).ready(function () {
     if ($.cookie("Authorization") != null) {
         var user = JSON.parse(window.localStorage.user);
@@ -48,9 +49,10 @@ function readURL(input) {
         }
         var formData = new FormData();
         formData.append("file", input.files[0]);
+        var user = JSON.parse(window.localStorage.user);
         $.ajax({
             type: "POST",
-            url: otakuyApi + "/users/" + JSON.parse(window.localStorage.user).id + "/avatars",
+            url: otakuyApi + "/users/" + user.id + "/avatars",
             headers: {
                 Authorization: $.cookie('Authorization')
             },
@@ -58,8 +60,10 @@ function readURL(input) {
             contentType: false, // 不要设置Content-Type请求头
             dataType: 'json',
             data: formData,
-            success: function () {
+            success: function (data, textStatus, request) {
                 notification(true, '上传头像成功')
+                user.avatar = data.data;
+                window.localStorage.setItem("user", JSON.stringify(user))
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 notification(false, XMLHttpRequest.responseJSON.message)
@@ -104,8 +108,10 @@ function getAlbumDetail(albumId) {
                 tags += ' <div class="tag">' + element.name + '</div>';
             });
             $('.album-detail').html('  <p>流派: ' + data.genres + '<br>专辑类型: ' + data.version + '<br>发行时间: ' + data.pubdate + '<br>出版商: ' + data.publisher + '</p>' + tags);
-
-            $('.album-res').html('下载链接: <a href="' + data.downloadRes.url + '" target="view_window">' + data.downloadRes.url + '</a><br/>链接密码: ' + data.downloadRes.password + '<br/>解压密码: ' + data.downloadRes.unzipKey)
+            if (data.downloadRes != null)
+                $('.album-res').html('下载链接: <a href="' + data.downloadRes.url + '" target="view_window">' + data.downloadRes.url + '</a><br/>链接密码: ' + data.downloadRes.password + '<br/>解压密码: ' + data.downloadRes.unzipKey)
+            else
+                $('.album-res').html('权限不足')
             $('.mask').show();
             $('#album').attr('album-id', data.id)
             $('#album').attr('owner', data.owner)

@@ -31,7 +31,7 @@ $('#beerimg').click(function (e) {
     var album_form=$('#album_form')
     e.preventDefault();
     if (isLogin) {
-    if (album_form.css('display') === 'none'||album_form.hasClass('fadeOutDown')) {
+        if (album_form.css('display') === 'none') {
         $('.beer-box').css('z-index', 2);
         $('.mask').show();
         album_form.attr("class","animated fadeInUp");

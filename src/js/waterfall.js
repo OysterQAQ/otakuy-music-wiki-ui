@@ -24,9 +24,9 @@ var getAlbumList = function (filter, param, currpage) {
             });
             $('#waterfall-container').append(html)
             page++;
+            $('.footer').css('top', (row - 1) * 240 + 1200 + 'px')
             if (albums.length != 16) {
                 over = true;
-                $('.footer').css('top', (row - 1) * 240 + 1200 + 'px')
             }
             flag = true;
 
