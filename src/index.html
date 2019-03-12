@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="css/comment.css">
     <link rel="stylesheet" href="css/waterfall-container.css">
     <link rel="stylesheet" href="css/revision.css">
-    <link rel="stylesheet" href="css/notifation-container.css">
+    <link rel="stylesheet" href="css/notification-container.css">
+    <link rel="stylesheet" href="css/help-container.css">
 </head>
 <body>
 <div class='login-box'>
@@ -113,10 +114,6 @@
     <hr>
     &copy;2018 otakuy.com All Right Reserved.
 </div>
-<!--<div class="loader" id="loader">
-    <img class="loaderimg" src="img/loading.svg">
-</div>-->
-
 <div class="login-box-container">
     <div class="formBox level-login">
         <div class="box boxShaddow"></div>
@@ -219,7 +216,6 @@
         </a>
     </div>
 </div>
-
 <div class="profile-card-container">
     <div class="middle-div">
         <div class="inner-middle-div">
@@ -261,7 +257,6 @@
 
     </div>
 </div>
-
 <div class="album-container" id="album">
     <div class="albumdetail">
         <div class="profile-bg"></div>
@@ -455,7 +450,6 @@
         <img id="submit-button" src="img/plane.svg">
     </div>
 </form>
-
 <div class="notification">
     <div class="notification-icon">
         <i class=" fa-check-circle-o"></i>
@@ -464,8 +458,52 @@
         Success!
     </p>
 </div>
+<div class="help-container">
+    <div class="info">
+        <img src="img/girl.gif">
+        <h2>用前の须知</h2>
+        <p>以下是一些值得仔细阅览的使用说明</p>
+    </div>
+    <div class="version">
+        <h4>浏览器的使用</h4>
+        <ul>
+            <li>目前仅保证兼容Chrome。</li>
+
+        </ul>
+        <h4>注册</h4>
+        <ul>
+            <li> 验证码区分大小写，注册后才能访问各类服务</li>
+        </ul>
+        <h4>搜索</h4>
+        <ul>
+            <li> 首页默认排序为时间排序，提供按照专辑标题、艺术家、标签的模糊搜索</li>
+        </ul>
+        <h4>发起修改</h4>
+        <ul>
+            <li> 点击专辑详情后，在详情框右下角发起修改，选择修改类别后，键入修改内容(目前前端没写好仅支持一些简单的修改)，之后点击小飞机提交。(单模块最多等待修改队列长度为3)</li>
+        </ul>
+        <h4>发起评论</h4>
+        <ul>
+            <li> 专辑详情下，左下角进入评论框，点击其他用户的评论块，进行对该用户的回复</li>
+        </ul>
+        <h4>发起打赏</h4>
+        <ul>
+            <li> 消耗自身Star对专辑维护者进行感谢 </a></li>
+        </ul>
+
+    </div>
+</div>
 <div class="mask"></div>
 </body>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?42005db2cef65b54feef7c67d8612300";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 <script src="js/compress/lrz.bundle.js"></script>
 <script type="text/javascript" src="//at.alicdn.com/t/font_1048075_x86zi0w7gaj.js"></script>
 <script type="text/javascript" src="js/jq.js"></script>

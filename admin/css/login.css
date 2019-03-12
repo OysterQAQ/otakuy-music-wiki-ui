@@ -1,5 +1,5 @@
 body {
-    background: url("../images/bg.png") no-repeat center center fixed;
+    background: url("https://wx3.sinaimg.cn/large/006346uDgy1frhpvxoqsmj31hc0u01de.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -23,8 +23,6 @@ body {
     top: -96px;
     left: 50%;
     margin-left: -50px;
-    background: url("../images/ok.png");
-    background-size: cover;
 }
 
 .input-box {

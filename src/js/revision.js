@@ -140,8 +140,14 @@ var selectModificationPoint = function (modificationPoint) {
             break;
         case 'artists':
             break;
-        default :
+        default : {
             revision_form.append($('.album-input-' + modificationPoint).parent().clone());
+            $('')
+            var find = revision_form.find('.album-input-' + modificationPoint);
+            find.attr('class', 'Field_Input album-revision-' + modificationPoint)
+            find.val('')
+        }
+
     }
     getRevisionList(modificationPoint)
 }
@@ -161,7 +167,7 @@ $('#revison-submit').on('click', function () {
         case 'artists':
             break;
         default :
-            revision.content = $('#revision-edit_form .album-input-' + modificationPointElement).val();
+            revision.content = $('#revision-edit_form .album-revision-' + modificationPointElement).val();
     }
 
     $.ajax({

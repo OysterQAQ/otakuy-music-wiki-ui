@@ -84,3 +84,23 @@ $('.notification--bell').click(function (e) {
 });
 
 
+$('#help-box').click(function (e) {
+    var help_container = $('.help-container')
+    e.preventDefault();
+
+    if (help_container.css('display') === 'none') {
+
+        help_container.attr("class", "help-container animated fadeInUp");
+        $('#help-box').css('z-index', 2);
+        $('.mask').show();
+        help_container.show();
+
+    } else {
+        help_container.attr("class", "help-container animated fadeOutDown");
+        setTimeout(function () {
+            help_container.hide();
+        }, 600);
+        $('.mask').hide();
+        $('#help-box').css('z-index', 1);
+    }
+});
