@@ -5,7 +5,7 @@ var page = 0,
     param = '',
     isLogin = false,
     over = false,
-    //otakuyApi = 'http://127.0.0.1:8080';
+    // otakuyApi = 'http://127.0.0.1:8080';
     otakuyApi = 'https://api.otakuy.com';
 $(document).ready(function () {
     if ($.cookie("Authorization") != null) {
@@ -47,30 +47,38 @@ function readURL(input) {
             $('.user-pic').fadeIn(650);
 
         }
-        var formData = new FormData();
-        formData.append("file", input.files[0]);
-        var user = JSON.parse(window.localStorage.user);
-        $.ajax({
-            type: "POST",
-            url: otakuyApi + "/users/" + user.id + "/avatars",
-            headers: {
-                Authorization: $.cookie('Authorization')
-            },
-            processData: false, // 使数据不做处理
-            contentType: false, // 不要设置Content-Type请求头
-            dataType: 'json',
-            data: formData,
-            success: function (data, textStatus, request) {
-                notification(true, '上传头像成功')
-                user.avatar = data.data;
-                window.localStorage.setItem("user", JSON.stringify(user))
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                notification(false, XMLHttpRequest.responseJSON.message)
+        lrz(input.files[0]).then(function (rst) {
+            // 处理成功会执行
+            var user = JSON.parse(window.localStorage.user);
+            rst.formData.append('fileLen', rst.fileLen);
+            $.ajax({
+                type: "POST",
+                url: otakuyApi + "/users/" + user.id + "/avatars",
+                headers: {
+                    Authorization: $.cookie('Authorization')
+                },
+                processData: false, // 使数据不做处理
+                contentType: false, // 不要设置Content-Type请求头
+                dataType: 'json',
+                data: rst.formData,
+                success: function (data, textStatus, request) {
+                    notification(true, '上传头像成功')
+                    user.avatar = data.data;
+                    window.localStorage.setItem("user", JSON.stringify(user))
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    notification(false, XMLHttpRequest.responseJSON.message)
 
-            }
+                }
+            });
+            reader.readAsDataURL(rst);
+            console.log(rst);
+        }).catch(function (err) {
+            // 处理失败会执行
+        }).always(function () {
+            // 不管是成功失败，都会执行
         });
-        reader.readAsDataURL(input.files[0]);
+
         console.log(input.files[0].size)
     }
 }

@@ -19,12 +19,12 @@ var getAlbumList = function (filter, param, currpage) {
 
                 html += '<div class="waterfall-box"  style="left: ' + (i % 4) * 240 + 'px; top: ' + (row - 1) * 240 + '' +
                     'px;background-image: url(\'' + element.cover + '\');"><div class="box-header-container"><div class="box-header"><h1 class="box-main-heading" onclick="clickToGetAlbumDetail(this)" album-id="' + element.id + '">'
-                    + element.title + '</h1><div class="box-stats"></div></div> </div><div class="box-overlay-header"></div><div class="box-body"><img src="'
-                    + 'https://avatar.otakuy.com/' + element.owner + '.png" class="box-body-image" user-id="' + element.owner + '"/><span class="box-body-stats">' + element.createTime + '</span> </div> </div>'
+                    + element.title + '</h1><div class="box-stats"></div></div> </div><div class="box-overlay-header"></div><div class="box-body"><div style="background-image: url(\'' + element.ownerAvatar + '\');"'
+                    + ' class="box-body-image" user-id="' + element.owner + '"></div><span class="box-body-stats">' + element.createTime + '</span> </div> </div>'
             });
             $('#waterfall-container').append(html)
             page++;
-            $('.footer').css('top', (row - 1) * 240 + 1200 + 'px')
+            $('.footer').css('top', (row - 1) * 240 + 1000 + 'px')
             if (albums.length != 16) {
                 over = true;
             }

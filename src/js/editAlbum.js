@@ -314,10 +314,11 @@ $('#submit-button').click(function () {
     var album = getFormDetail();
     console.log(album.id)
     var file = $("#cover-upload").get(0).files[0];
-    var formData = new FormData();
+
+    //var formData = new FormData();
     console.log(file)
-    if (file != null)
-        formData.append("file", file);
+    //  if (file != null)
+    //  formData.append("file", file);
     var type = '';
     var url = '';
 
@@ -339,31 +340,41 @@ $('#submit-button').click(function () {
         data: JSON.stringify(album),
         success: function (data, textStatus, request) {
             album.id = data.data.id;
-            console.log(formData.get('file'))
-            if (formData.get('file') != undefined) {
-                $.ajax({
-                    url: otakuyApi + "/albums/" + album.id + "/covers",
-                    type: 'PUT',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    headers: {
-                        Authorization: $.cookie('Authorization')
-                    },
-                    beforeSend: function () {
-                        console.log("正在进行，请稍候");
-                    },
-                    success: function (data) {
-                        notification(true, "专辑发布成功,等待管理员审核")
+            //  console.log(formData.get('file'))
+            if (file != null) {
+                lrz(file).then(function (rst) {
+                    // 处理成功会执行
+                    rst.formData.append('fileLen', rst.fileLen);
+                    $.ajax({
+                        url: otakuyApi + "/albums/" + album.id + "/covers",
+                        type: 'PUT',
+                        data: rst.formData,
+                        processData: false,
+                        contentType: false,
+                        headers: {
+                            Authorization: $.cookie('Authorization')
+                        },
+                        beforeSend: function () {
+                            console.log("正在进行，请稍候");
+                        },
+                        success: function (data) {
+                            notification(true, "专辑发布成功,等待管理员审核")
 
-                    },
-                    error: function (data) {
-                        notification(false, "封面上传失败")
-                        console.log(data);
-                    }
+                        },
+                        error: function (data) {
+                            notification(false, "封面上传失败")
+                            console.log(data);
+                        }
+                    });
+                    console.log(rst);
+                }).catch(function (err) {
+                    // 处理失败会执行
+                }).always(function () {
+                    // 不管是成功失败，都会执行
                 });
-            }
-            notification(true, "专辑发布成功,等待管理员审核")
+
+            } else
+                notification(true, "专辑发布成功,等待管理员审核")
             $('.beer-box').css('z-index', 1);
             if (type == 'POST')
                 $('.mask').hide();

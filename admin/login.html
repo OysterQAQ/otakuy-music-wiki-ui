@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宅乐维基-后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="img/icon.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="lib/layui/css/layui.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_693759_ask70l8wanw.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css"/>
+    <link rel="stylesheet" href="css/login.css"/>
+    <link rel="stylesheet" href="lib/nprogress/nprogress.css">
+</head>
+<body>
+<div class="login-box animated rotateIn">
+    <div class="head"></div>
+    <div class="input-box">
+        <form class="layui-form" action="">
+            <input type="text" id="username" name="username" required lay-verify="required" placeholder="邮箱/手机号/平台账号"
+                   autocomplete="off" class="layui-input">
+            <input type="password" id="password" name="password" required lay-verify="required" placeholder="密码"
+                   autocomplete="off" class="layui-input">
+            <input type="submit" value="登 录" lay-submit lay-filter="login">
+        </form>
+        <div class="oauth">
+            <i class="iconfont icon-WechatIMG" style="font-size: 25px;"></i>
+            <i class="iconfont icon-github"></i>
+            <i class="iconfont icon-logo-weibo"></i>
+            <i class="iconfont icon-qq"></i>
+            <i class="iconfont icon-weixin"></i>
+            <i class="iconfont icon-zhifubao"></i>
+        </div>
+    </div>
+</div>
+<!--js逻辑-->
+<script src="lib/layui/layui.js"></script>
+<script src="lib/nprogress/nprogress.js"></script>
+<script>
+    NProgress.start();
+    window.onload = function () {
+        NProgress.done();
+    }
+    layui.use(['form', 'jquery'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+
+        form.on('submit(login)', function (data) {
+            layer.msg("登陆中...", {icon: 6, time: 1000, anim: 4}, function () {
+                var user = {}
+                user.username = $('#username').val();
+                user.password = $('#password').val();
+                $.ajax({
+                    type: "POST",
+                    url: 'https://api.otakuy.com/admin/login',
+                    processData: false,
+                    datatype: "application/json",
+                    contentType: 'application/json',//typically 'application/x-www-form-urlencoded', but the service you are calling may expect 'text/json'... chec
+                    data: JSON.stringify(user),
+                    success: function (data, textStatus, request) {
+                        user = data.data
+                        setCookie('Authorization', "Bearer " + request.getResponseHeader('Authorization'))
+                        window.localStorage.setItem("user", JSON.stringify(user))
+                        window.localStorage.setItem("user", JSON.stringify(user))
+                        window.location = "https://admin.otakuy.com/index.html?user=" + JSON.stringify(user);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        return false;
+                    }
+                });
+
+            });
+            return false;
+        });
+
+        function setCookie(name, value) {
+            var Days = 30;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days * 20 * 60 * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        }
+    });
+</script>
+</body>
+</html>
