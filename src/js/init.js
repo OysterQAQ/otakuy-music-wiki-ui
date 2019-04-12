@@ -5,8 +5,8 @@ var page = 0,
     param = '',
     isLogin = false,
     over = false,
-    otakuyApi = 'http://127.0.0.1:8080';
-//  otakuyApi = 'https://api.otakuy.com';
+    //otakuyApi = 'http://127.0.0.1';
+    otakuyApi = 'https://api.otakuy.com';
 $(document).ready(function () {
     if ($.cookie("Authorization") != null) {
         var user = JSON.parse(window.localStorage.user);
@@ -106,9 +106,23 @@ function getAlbumDetail(albumId) {
             $('.album-title').html('《' + data.title + '》');
             $('.album-artist').html(artist);
             $('.album-intro').html(data.intro);
+            var preview = "";
+            var haspreview = false;
             $.each(data.tracks, function (index, element) {
-                html += (index + 1) + '. ' + element.title + '<br>';
+                html += '<div preview="' + element.preview + '">' + (index + 1) + '. ' + element.title + '</div><br>';
+                if (element.preview != "") {
+                    haspreview = true;
+                    preview += '<div class="player__albumImg" data-author="' + artist + '" data-song="' + element.title + '"data data-src="' + element.preview + '" style="background-image: url(' + data.cover + ')"></div>';
+                }
             });
+            if (haspreview) {
+                $('.player__album').html(preview);
+                $('.player__album').find("div").first().addClass("active-song");
+                audioElement.setAttribute('src', $('.active-song').attr('data-src'));
+                updateInfo();
+                //   $(".player__album").children(":first").get(0).attr('class','player__albumImg active-song');
+            }
+
             $('.album-tracks').html(html);
             $('.profile-image').css("background-image", "url(" + data.cover + ")");
             var tags = '';

@@ -258,7 +258,7 @@ function getDoubanDetail(item) {
                 return item.name;
             }).join('/');
             $.each(data.tracks, function (i, element) {
-                tracks += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="pubdate" value="' + element.title + '" /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
+                tracks += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="pubdate" preview="' + element.preview + '"value="' + element.title + '" /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
             });
             $('#tracks').html(tracks)
             $('.album-input-title').val(data.title);
@@ -288,7 +288,7 @@ function autofull(data) {
         return item.name;
     }).join('/');
     $.each(data.tracks, function (i, element) {
-        tracks += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="pubdate" value="' + element.title + '" /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
+        tracks += ' <div class="line-editable"> <input autocomplete="off" placeholder="音轨' + (i + 1) + '" type="text" class="Field_Input track"  name="pubdate" preview="' + element.preview + '" value="' + element.title + '" /> <label><div>音轨' + (i + 1) + '</div> </label></div>';
     });
     $('#tracks').html(tracks)
     $('.album-input-title').val(data.title);
@@ -408,7 +408,7 @@ function getFormDetail() {
     album.tracks = jQuery.makeArray($(".track").map(function (currentValue, index, arr) {
         var track = {};
         track.title = $(index).val();
-        track.preview = '';
+        track.preview = $(index).attr('preview');
         return track;
     }));
     album.tags = jQuery.makeArray($(".tag").map(function (currentValue, index, arr) {

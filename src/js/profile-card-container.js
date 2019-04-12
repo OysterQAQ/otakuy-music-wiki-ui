@@ -28,11 +28,10 @@ $('#sign-out').click(function () {
 });
 
 function edit_album(btn) {
-    console.log("aaa")
+    $('.login-box').css('z-index', 1);
     var album_form = $('#album_form')
     album_form.attr('album-id', $(btn).attr('id'))
     if (album_form.css('display') === 'none' || album_form.hasClass('fadeOutDown')) {
-        console.log("aaa")
         $.ajax({
             type: "GET",
             url: otakuyApi + "/albums/" + $(btn).attr('id'),
