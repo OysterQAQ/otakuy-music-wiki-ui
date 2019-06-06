@@ -227,7 +227,7 @@ $('#get-album-suggestion').click(function () {
                     var html = '';
                     $.each(data, function (index, element) {
                         html += '<div class="suggest-item" ><img class="item-cover" id="' + element.douban_id
-                            + '" src="https://douban.otakuy.com/get/' + element.cover + '" onclick="getDoubanDetail(this)"/><div  class="item-title">' + element.title + '</div></div>';
+                            + '" src="https://douban.otakuy.com:23334/get/' + element.cover + '" onclick="getDoubanDetail(this)"/><div  class="item-title">' + element.title + '</div></div>';
                     });
                     $('#suggest-album').html(html)
                 },

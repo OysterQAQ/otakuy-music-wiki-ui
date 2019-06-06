@@ -5,8 +5,8 @@ var page = 0,
     param = '',
     isLogin = false,
     over = false,
-    //otakuyApi = 'http://127.0.0.1';
-    otakuyApi = 'https://api.otakuy.com';
+    otakuyApi = 'http://127.0.0.1';
+// otakuyApi = 'https://api.otakuy.com';
 $(document).ready(function () {
     if ($.cookie("Authorization") != null) {
         var user = JSON.parse(window.localStorage.user);
